@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import NavBar from "@/components/Navigation/nav-bar";
 
 export const metadata: Metadata = {
 	title: "Medical Plaform",
@@ -20,7 +21,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${poppins.variable} antialiased`}>{children}</body>
+			<body className={`${poppins.variable} antialiased`}>
+				{/* Nav */}
+				<NavBar />
+				{children}
+				{/* Footer */}
+			</body>
 		</html>
 	);
 }
