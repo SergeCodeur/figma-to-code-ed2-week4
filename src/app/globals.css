@@ -25,3 +25,11 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .input-block {
+    @apply border border-primary-300 rounded-xl py-2 px-3
+     text-gray-600 text-base placeholder-gray-400 
+   focus:border-blue-500 focus:outline-none focus:ring-blue-500
+  }
+}

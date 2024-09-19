@@ -18,16 +18,16 @@ const Card: FC<ICard> = props => {
 
 	return (
 		<div
-			className="block max-w-sm p-6 bg-white border
+			className="block max-w-sm p-5 bg-white border
 		 border-gray-200 rounded-2xl space-y-3 shadow"
 		>
-			<div className="w-96 flex space-x-4">
+			<div className="flex space-x-4">
 				<Image
 					src={image}
 					alt={`${name}'s profile picture`}
 					className="rounded-full border border-primary-300"
-					width={50}
-					height={50}
+					width={47}
+					height={47}
 					priority
 				/>
 				<div className="flex flex-col pt-1 space-y-1">
@@ -35,7 +35,7 @@ const Card: FC<ICard> = props => {
 					<div className="flex space-x-1">{renderRatings}</div>
 				</div>
 			</div>
-			<p className="font-normal text-primary-50">{text}</p>
+			<p className="font-normal text-sm text-primary-50">{text}</p>
 		</div>
 	);
 };
