@@ -8,6 +8,18 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			width: {
+				"lg": "968px",
+				"hero-text-w":"670px"
+			},
+			height: {
+				"lg": "700px",
+				"hero-text-h":"438px"
+			},
+			backgroundImage: {
+				"hero-bg": "url('/images/hero_bg.webp')",
+				"hero-img": "url('/images/hero_image.webp')",
+			},
 			colors: {
 				background: "var(--background)",
 				foreground: "var(--foreground)",
