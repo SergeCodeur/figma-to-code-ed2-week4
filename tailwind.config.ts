@@ -1,18 +1,27 @@
-module.exports = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        darkBlue: '#274760',
-        blue: '#307BC4',
-        gray:'#E6E6E6',
-        darkGray:'#B4B4B4'
-      },
-    },
-  },
-  plugins: [],
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+	content: [
+		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+	],
+	theme: {
+		extend: {
+			colors: {
+				background: "#ffffff",
+				foreground: "#274760",
+				gray: "#e6e6e6",
+				blue: "#307bc4",
+				"dark-blue": "#274760",
+				white: "#ffffff",
+				"linear-light-blue": "var(--linear-light-blue)",
+				"linear-dark-blue": "var(--linear-dark-blue)",
+			},
+			borderRadius: {
+				ls: "10px",
+			},
+		},
+	},
+	plugins: [],
 };
