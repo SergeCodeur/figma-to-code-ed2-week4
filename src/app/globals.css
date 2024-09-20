@@ -24,8 +24,15 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
 	}
 }
+
+@layer components {
+	.title-style {
+	  @apply text-3xl lg:text-5xl font-bold text-primary;
+	}
+  }
