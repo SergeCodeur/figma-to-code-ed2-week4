@@ -10,11 +10,16 @@ const config: Config = {
 		extend: {
 			width: {
 				"lg": "968px",
-				"hero-text-w":"670px"
+				"hero-text-w":"670px",
+				"aboutUS-imgDiv-w":"700px",
+				"aboutUs-w":"550px",
+				"about-img-w":"520px"
 			},
 			height: {
 				"lg": "700px",
-				"hero-text-h":"438px"
+				"hero-text-h":"438px",
+				"aboutUS-imgDiv-h":"650px",
+				"about-img-h":"483px"
 			},
 			backgroundImage: {
 				"hero-bg": "url('/images/hero_bg.webp')",

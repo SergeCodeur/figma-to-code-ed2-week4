@@ -45,7 +45,7 @@ const OurValues = () => {
 	return (
 		<div className="mt-28 px-6 md:px-16">
 			<h1 className="title-style text-center">Our Values</h1>
-			<div className="mt-16 flex flex-wrap gap-x-14 gap-y-5 justify-center items-center">
+			<div className="mt-10 flex flex-wrap gap-x-14 gap-y-5 justify-center items-center">
 				{values.map((val, i) => (
 					<div key={i} className={`${i===1 && "lg:mb-10 mb-0"} h-fit max-w-96 flex flex-col justify-center items-center gap-8 rounded shadow py-12 px-7`}>
 						<div className="flex items-center justify-center gap-2">
