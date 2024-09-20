@@ -3,9 +3,9 @@ import React from 'react';
 import Image from 'next/image';
 import CustomButton from './CustomButton';
 
-const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean })  => {
+const SideBar = ()  => {
   return (
-    <div className={`w-44 md:flex hidden flex-col justify-between h-screen border-r border-gray p-4 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
+    <div className='w-44 md:flex hidden flex-col justify-between h-screen border-r border-gray p-4'>
         <div>
           <div className='flex items-center justify-center'>
             <Image src='./icons/logo.svg' alt='icon logo' width={50} height={50} />
