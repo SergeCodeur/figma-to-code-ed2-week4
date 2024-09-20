@@ -1,5 +1,8 @@
 import React from "react";
 import Input from "../ui/input";
+import Button from "../ui/button";
+import Arrow from "../ui/arrow";
+import Link from "next/link";
 
 const SignUp = () => {
 	return (
@@ -14,16 +17,48 @@ const SignUp = () => {
 				</span>
 			</div>
 			<div className="flex flex-col space-y-4 w-full">
-				<Input className="input-block" placeholder="Doe" type="text" />
-				<Input className="input-block" placeholder="John" type="text" />
-				<Input
-					className="input-block"
-					placeholder="john@gmail.com"
-					type="email"
-				/>
-				<Input className="input-block" placeholder="********" type="password" />
+				<div className="flex flex-col space-y-2">
+					<label className="ml-2 text-primary-100 text-sm">First name</label>
+					<Input className="input-block" placeholder="Doe" type="text" />
+				</div>
+				<div className="flex flex-col space-y-2">
+					<label className="ml-2 text-primary-100 text-sm">Last name</label>
+					<Input className="input-block" placeholder="John" type="text" />
+				</div>
+				<div className="flex flex-col space-y-2">
+					<label className="ml-2 text-primary-100 text-sm">Email</label>
+
+					<Input
+						className="input-block"
+						placeholder="john@gmail.com"
+						type="email"
+					/>
+				</div>
+				<div className="flex flex-col space-y-2">
+					<label className="ml-2 text-primary-100 text-sm">Password</label>
+
+					<Input
+						className="input-block"
+						placeholder="********"
+						type="password"
+					/>
+				</div>
+				<div className="flex flex-col space-y-2">
+					<Button
+						className="flex py-2 text-center bg-gradient-to-r from-primary-400
+				 to-primary-900 rounded-full w-2/5 justify-center items-center space-x-2"
+					>
+						<span className="text-white text-base">Register</span>
+						<Arrow />
+					</Button>
+					<span className="text-xs text-primary-900">
+						Already have an account ?
+						<Link href="/" className="text-primary-100 ml-2 font-extrabold">
+							Log In
+						</Link>
+					</span>
+				</div>
 			</div>
-			<div></div>
 		</div>
 	);
 };
