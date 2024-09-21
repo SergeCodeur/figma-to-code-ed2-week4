@@ -18,6 +18,9 @@ const config: Config = {
 				"linear-light-blue": "var(--linear-light-blue)",
 				"linear-dark-blue": "var(--linear-dark-blue)",
 			},
+			borderRadius: {
+				ls: "10px",
+			},
 		},
 	},
 	plugins: [],
