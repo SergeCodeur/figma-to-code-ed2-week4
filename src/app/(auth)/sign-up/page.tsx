@@ -72,7 +72,7 @@ const SignUp = () => {
 					<span className="text-xs text-foreground">
 						Already have an account ?
 						<Link
-							href="/auth/sign-in"
+							href="/sign-in"
 							className="text-[#414870] ml-2 font-extrabold"
 						>
 							Log In

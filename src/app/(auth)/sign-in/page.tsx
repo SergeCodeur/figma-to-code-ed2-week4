@@ -66,7 +66,7 @@ const SignIn = () => {
 					</div>
 					<div className="text-sm">
 						<Link
-							href="/auth/recover-password"
+							href="/recover-password"
 							className="text-foreground ml-2 hover:font-extrabold"
 						>
 							Forgot your password?
@@ -84,7 +84,7 @@ const SignIn = () => {
 					<span className="text-xs text-foreground">
 						Don't have an account?
 						<Link
-							href="/auth/sign-up"
+							href="/sign-up"
 							className="text-[#414870] ml-2 font-extrabold"
 						>
 							Create an Account

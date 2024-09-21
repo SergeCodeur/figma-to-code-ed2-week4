@@ -46,7 +46,7 @@ const RecoverPassword = () => {
 					>
 						<span className="text-white text-base">Submit</span>
 					</Button>
-					<Link href="/auth/sign-in" className="text-white text-base w-full">
+					<Link href="/sign-in" className="text-white text-base w-full">
 						<Button
 							className="py-2 text-center bg-gradient-to-r from-[#999898]
 				 to-[#1f1e1e] rounded-full w-full"
