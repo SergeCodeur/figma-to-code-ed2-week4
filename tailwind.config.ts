@@ -9,16 +9,14 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				background: "var(--background)",
-				foreground: "var(--foreground)",
-				primary: {
-					50: "#27476080",
-					100: "#414870",
-					400: "#307BC4",
-					200: "#D2EAEF",
-					300: "#86BBF1",
-					900: "#274760",
-				},
+				background: "#ffffff",
+				foreground: "#274760",
+				gray: "#e6e6e6",
+				blue: "#307bc4",
+				"dark-blue": "#274760",
+				white: "#ffffff",
+				"linear-light-blue": "var(--linear-light-blue)",
+				"linear-dark-blue": "var(--linear-dark-blue)",
 			},
 		},
 	},
