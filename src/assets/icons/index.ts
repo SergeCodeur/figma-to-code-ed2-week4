@@ -4,6 +4,7 @@ export { default as ArrowLeft } from "./arrow-left";
 export { default as ArrowRight } from "./arrow-right";
 export { default as Bell } from "./bell";
 export { default as Calendar } from "./calendar";
+export { default as Cancel } from "./cancel";
 export { default as Clock } from "./clock";
 export { default as DownloadSquare } from "./download-square";
 export { default as FilledCircle } from "./filled-circle";
