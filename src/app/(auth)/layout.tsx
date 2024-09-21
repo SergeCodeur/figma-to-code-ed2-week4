@@ -8,13 +8,13 @@ export default function AuthLayout({
 }>) {
 	return (
 		<div className="flex h-screen w-screen">
-			<div className="hidden flex-1 bg-gradient-to-r from-primary-200 to-primary-300 bg-cover order-last lg:flex">
+			<div className="hidden flex-1 bg-gradient-to-r from-[#D2EAEF] to-[#86BBF1] bg-cover order-last lg:flex">
 				<div className="space-y-12 w-full">
 					<div className="space-y-3 pt-8 pl-12 flex flex-col">
-						<span className="text-3xl text-primary-900 font-extrabold">
+						<span className="text-3xl text-foreground font-extrabold">
 							We give the best experience
 						</span>
-						<span className="max-w-sm text-primary-900 text-base">
+						<span className="max-w-sm text-foreground text-base">
 							Dedicated virtual-consultation platform for doctors and patients
 							to help them consult across various channels
 						</span>
@@ -22,7 +22,7 @@ export default function AuthLayout({
 					<div className="space-y-4">
 						<div className="flex justify-center items-center">
 							<Card
-								color="text-primary-900"
+								color="text-foreground"
 								fill={4}
 								image="/images/profile.png"
 								name="Eleanor Pena"
@@ -35,7 +35,7 @@ export default function AuthLayout({
 						<div className="flex space-x-8">
 							<div className="ml-8">
 								<Card
-									color="text-primary-900"
+									color="text-foreground"
 									fill={3}
 									image="/images/profile.png"
 									name="John doe"
