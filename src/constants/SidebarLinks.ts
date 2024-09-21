@@ -15,6 +15,6 @@ export const sidebarLinks: SidebarLinkProps[] = [
 	{
 		icon: Calendar,
 		label: "Appointment",
-		href: "#",
+		href: "/dashboard-doctor/appointment",
 	},
 ];
