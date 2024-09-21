@@ -3,27 +3,14 @@
 @tailwind utilities;
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
-	--primary: #274760;
-	--secondary: #307bc4;
+	--foreground: #274760;
 }
-
-/* @media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-		--primary: #274760;
-		--secondary: #307bc4;
-	}
-} */
 
 body {
 	color: var(--foreground);
 	background: var(--background);
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: var(--font-geist-sans);
 }
-
 
 @layer utilities {
 	.text-balance {
@@ -31,8 +18,65 @@ body {
 	}
 }
 
+/* Scrollbar styling for the .custom-scrollbar div */
+.custom-scrollbar::-webkit-scrollbar {
+	width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background-color: #e6e6e6;
+	border-radius: 10px; /* Make the scrollbar rounded */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+	background-color: #e5e7eb; /* Light gray for the track */
+}
+
+@layer components {
+	.input-block {
+		@apply border border-primary-300 rounded-xl py-2 px-3
+     text-gray-600 text-base placeholder-gray-400 
+   focus:border-blue-500 focus:outline-none focus:ring-blue-500;
+	}
+
+	@keyframes moveInLeft {
+		from {
+			opacity: 0;
+			transform: translateX(-100px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	.move-in-left {
+		animation: moveInLeft 0.9s ease-in-out forwards;
+	}
+
+	@keyframes fallIn {
+		from {
+			opacity: 0;
+			transform: translateY(40px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.fall-in-init {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	.fall-in {
+		animation: fallIn 0.4s ease-in-out forwards;
+	}
+}
+
 @layer components {
 	.title-style {
-	  @apply text-3xl lg:text-5xl font-bold text-primary;
+		@apply text-3xl lg:text-5xl font-bold text-primary;
 	}
-  }
+}
