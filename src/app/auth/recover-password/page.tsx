@@ -17,10 +17,10 @@ const RecoverPassword = () => {
 	return (
 		<div className="flex flex-col justify-center items-center space-y-10 overflow-hidden">
 			<div className="flex flex-col space-y-3 ">
-				<span className="font-extrabold text-3xl text-primary-900">
+				<span className="font-extrabold text-3xl text-foreground">
 					Forgot Password
 				</span>
-				<span className="text-base text-primary-900">
+				<span className="text-base text-foreground">
 					Enter your email to reset your password.
 				</span>
 			</div>
@@ -30,7 +30,7 @@ const RecoverPassword = () => {
 				}`}
 			>
 				<div className="flex flex-col space-y-2">
-					<label className="ml-2 text-primary-100 text-sm">Email</label>
+					<label className="ml-2 text-[#414870] text-sm">Email</label>
 
 					<Input
 						className="input-block"
@@ -41,15 +41,15 @@ const RecoverPassword = () => {
 
 				<div className="flex space-x-2">
 					<Button
-						className="py-2 text-center bg-gradient-to-r from-primary-400
-				 to-primary-900 rounded-full w-full"
+						className="py-2 text-center bg-gradient-to-r from-bleu
+				 to-foreground rounded-full w-full"
 					>
 						<span className="text-white text-base">Submit</span>
 					</Button>
 					<Link href="/auth/sign-in" className="text-white text-base w-full">
 						<Button
-							className="py-2 text-center bg-gradient-to-r from-gray-500
-				 to-gray-800 rounded-full w-full"
+							className="py-2 text-center bg-gradient-to-r from-[#999898]
+				 to-[#1f1e1e] rounded-full w-full"
 						>
 							Cancel
 						</Button>
