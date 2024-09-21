@@ -20,8 +20,8 @@ const Departments = () => {
 	return (
 		<div className="mt-20 px-6 md:px-28 w-full">
 			<div className="relative flex items-center justify-center flex-col">
-				<div className="w-full h-60 lg:h-80 bg-dep-bg bg-cover bg-no-repeat rounded-3xl"></div>
-				<div className="bg-transparent flex items-start justify-between flex-col gap-6 w-full min-h-80 absolute top-20 lg:top-28 left-0">
+				<div className="w-full h-60 lg:h-80 bg-dep-bg bg-cover bg-no-repeat rounded-3xl absolute top-0 left-0 -z-10"></div>
+				<div className="bg-transparent flex items-start justify-between flex-col mt-20 lg:mt-28 gap-6 w-full min-h-80">
 					<div className="w-full">
 						<h1 className="title-style text-center">Departments</h1>
 					</div>
