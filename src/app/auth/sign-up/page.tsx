@@ -1,10 +1,22 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Input from "../ui/input";
 import Button from "../ui/button";
 import Arrow from "../ui/arrow";
 import Link from "next/link";
+import useRegister from "./userRegister";
+import { registerForm } from "../utils/data";
 
 const SignUp = () => {
+	const [animate, setAnimate] = useState(false);
+	const { formData, errors, handleChange, handleSubmit } = useRegister();
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setAnimate(true);
+		}, 100);
+		return () => clearTimeout(timer);
+	}, []);
 	return (
 		<div className="flex flex-col justify-center items-center space-y-10">
 			<div className="flex flex-col space-y-3 ">
@@ -16,49 +28,58 @@ const SignUp = () => {
 					appointments.
 				</span>
 			</div>
-			<div className="flex flex-col space-y-4 w-full">
-				<div className="flex flex-col space-y-2">
-					<label className="ml-2 text-primary-100 text-sm">First name</label>
-					<Input className="input-block" placeholder="Doe" type="text" />
-				</div>
-				<div className="flex flex-col space-y-2">
-					<label className="ml-2 text-primary-100 text-sm">Last name</label>
-					<Input className="input-block" placeholder="John" type="text" />
-				</div>
-				<div className="flex flex-col space-y-2">
-					<label className="ml-2 text-primary-100 text-sm">Email</label>
+			<form
+				className={`flex flex-col space-y-4 w-full ${
+					animate ? "move-in-left" : "opacity-0"
+				}`}
+				onSubmit={handleSubmit}
+			>
+				{registerForm.map(({ name, label, placeholder }) => (
+					<div className="flex flex-col space-y-2" key={name}>
+						<label className="ml-2 text-primary-100 text-sm">{label}</label>
+						<Input
+							type={
+								name === "email"
+									? "email"
+									: name === "password"
+									? "password"
+									: "text"
+							}
+							name={name}
+							className="input-block"
+							value={formData[name as keyof typeof formData]}
+							onChange={handleChange}
+							placeholder={placeholder}
+							required
+						/>
+						{errors[name as keyof typeof formData] && (
+							<span className="text-sm text-red-500">
+								{errors[name as keyof typeof formData]}
+							</span>
+						)}
+					</div>
+				))}
 
-					<Input
-						className="input-block"
-						placeholder="john@gmail.com"
-						type="email"
-					/>
-				</div>
-				<div className="flex flex-col space-y-2">
-					<label className="ml-2 text-primary-100 text-sm">Password</label>
-
-					<Input
-						className="input-block"
-						placeholder="********"
-						type="password"
-					/>
-				</div>
 				<div className="flex flex-col space-y-2">
 					<Button
 						className="flex py-2 text-center bg-gradient-to-r from-primary-400
 				 to-primary-900 rounded-full w-2/5 justify-center items-center space-x-2"
+						type="submit"
 					>
 						<span className="text-white text-base">Register</span>
 						<Arrow />
 					</Button>
 					<span className="text-xs text-primary-900">
 						Already have an account ?
-						<Link href="/" className="text-primary-100 ml-2 font-extrabold">
+						<Link
+							href="/auth/sign-in"
+							className="text-primary-100 ml-2 font-extrabold"
+						>
 							Log In
 						</Link>
 					</span>
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 };

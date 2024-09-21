@@ -32,4 +32,39 @@ body {
      text-gray-600 text-base placeholder-gray-400 
    focus:border-blue-500 focus:outline-none focus:ring-blue-500
   }
+
+  @keyframes moveInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .move-in-left {
+    animation: moveInLeft 0.9s ease-in-out forwards;
+  }
+
+@keyframes fallIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fall-in-init {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.fall-in {
+  animation: fallIn 0.4s ease-in-out forwards;
+}  
 }
