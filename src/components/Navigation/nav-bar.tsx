@@ -1,11 +1,11 @@
 "use client";
 
+import { Cancel, Hamburger } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import DefaultButton from "../default-button";
+import { useState } from "react";
+import Button from "../ui/Button";
 import NavLinks from "./nav-likns";
-import { Menu, X } from "lucide-react";
 
 const NavBar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +26,7 @@ const NavBar = () => {
 					onClick={() => setMenuOpen(!menuOpen)}
 					className="text-primary focus:outline-none"
 				>
-					{menuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+					{menuOpen ? <Cancel /> : <Hamburger />}
 				</button>
 			</div>
 
@@ -39,7 +39,10 @@ const NavBar = () => {
 			</div>
 
 			<div className="hidden lg:flex w-52  items-center justify-end">
-				<DefaultButton text="Book Now" />
+				<Button variant="linear_color">
+					Book now
+					
+					</Button>
 			</div>
 		</nav>
 	);

@@ -1,19 +1,16 @@
-import { Baby, HeartPulse, LucideIcon, Siren } from "lucide-react";
-import React from "react";
-
 interface departments {
-	icon: LucideIcon;
+	icon: string;
 	name: string;
 }
 
 const Departments = () => {
 	//
 	const departmentsList: departments[] = [
-		{ icon: Siren, name: "Emergency Department" },
-		{ icon: Baby, name: "Pediatric Department" },
-		{ icon: Baby, name: "Gynecology Department" },
-		{ icon: HeartPulse, name: "Cardiology Department" },
-		{ icon: Baby, name: "Neurologiy Department" },
+		{ icon: "Siren", name: "Emergency Department" },
+		{ icon: "Baby", name: "Pediatric Department" },
+		{ icon: "Baby", name: "Gynecology Department" },
+		{ icon: "HeartPulse", name: "Cardiology Department" },
+		{ icon: "Baby", name: "Neurologiy Department" },
 	];
 	//
 
@@ -31,8 +28,10 @@ const Departments = () => {
 								key={i}
 								className="bg-background w-44 h-52 lg:w-56 lg:h-60 p-0 lg:p-6 flex items-center justify-center flex-col gap-3 rounded-xl"
 							>
-								<val.icon className="w-11 h-11 text-primary" />
-								<h3 className="font-medium text-xl text-primary text-center">{val.name}</h3>
+								<val.icon />
+								<h3 className="font-medium text-xl text-primary text-center">
+									{val.name}
+								</h3>
 							</div>
 						))}
 					</div>

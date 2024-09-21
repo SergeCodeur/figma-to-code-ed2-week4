@@ -1,87 +1,90 @@
-import { Play, PlayCircle } from "lucide-react";
-import Image from "next/image";
-import React from "react";
-import DefaultButton from "../default-button";
+// interface Item {
+// 	src: string;
+// 	label: string;
+// 	text: string;
+// }
 
-interface Item {
-	src: string;
-	label: string;
-	text: string;
-}
+import Image from "next/image";
+import Button from "../ui/Button";
 
 const HeroSection = () => {
-	//
-	const items: Item[] = [
-		{
-			src: "/icons/hotline.svg",
-			label: "Hotline",
-			text: "123-456-7890",
-		},
-		{
-			src: "/icons/ambulance.svg",
-			label: "Ambulance",
-			text: "876-256-876",
-		},
-		{
-			src: "/icons/location_2.svg",
-			label: "Location",
-			text: "New York, US",
-		},
-	];
+	// //
+	// const items: Item[] = [
+	// 	{
+	// 		src: "/icons/hotline.svg",
+	// 		label: "Hotline",
+	// 		text: "123-456-7890",
+	// 	},
+	// 	{
+	// 		src: "/icons/ambulance.svg",
+	// 		label: "Ambulance",
+	// 		text: "876-256-876",
+	// 	},
+	// 	{
+	// 		src: "/icons/location_2.svg",
+	// 		label: "Location",
+	// 		text: "New York, US",
+	// 	},
+	// ];
 	//
 	return (
-		<div className="relative">
-			<div className="w-full bg-hero-bg flex px-2 md:px-20 flex-col md:flex-row justify-center">
-				{/* Left Section */}
-				<div className=" flex flex-col items-start w-full md:h-hero-text-h md:w-hero-text-w mt-5 md:mt-16">
-					<h1 className="text-3xl lg:text-6xl font-semibold text-primary">
+		<div className="relative h-[600px]">
+			<Image
+				src="/images/hero_bg.png"
+				width={1000}
+				height={300}
+				alt=""
+				className="object-cover w-full h-full"
+			/>
+			<div className="absolute left-0 top-2/4 -translate-y-2/4 max-w-[670px] w-full pl-[73px] space-y-24">
+				<div className="space-y-7">
+					<h1 className="text-6xl font-bold leading-[58px]">
 						Your Partner in Health and Wellness
 					</h1>
-					<p className="text-xl text-primary md:mt-7 mt-3">
+					<p className="text-xl">
 						We are committed to providing you with the best medical and
 						healthcare services to help you live healthier and happier.
 					</p>
-					<button className="flex items-center gap-3 mt-10 md:mt-28 text-xl text-primary">
-						<Image
-							src={"/icons/play-circle.svg"}
-							alt="Play Video"
-							height={50}
-							width={50}
-							loading="lazy"
-						/>
-						See how we work
-					</button>
 				</div>
-
-				{/* Right Section */}
-				<div className="w-full h-80 md:h-[650px] lg:h-lg md:w-lg bg-hero-img bg-contain bg-no-repeat"></div>
-			</div>
-
-			{/* Info Section */}
-			<div className="py-4 px-10 w-full flex-wrap h-32 md:w-11/12 rounded-xl bg-background flex items-center justify-between gap-4 md:gap-24 relative md:absolute md:left-1/2 md:-translate-x-1/2 md:-bottom-16">
-				{items.map(item => (
-					<div key={item.label} className="flex items-center gap-3">
-						<div className="rounded-full bg-primary p-2 w-10 h-10 md:w-16 md:h-16 flex items-center justify-center">
-							<Image
-								src={item.src}
-								alt={item.label}
-								height={20}
-								width={20}
-								loading="lazy"
+				<Button variant="ghost" className="px-0">
+					<svg
+						width="50"
+						height="51"
+						viewBox="0 0 50 51"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<g clip-path="url(#clip0_1_27)">
+							<path
+								d="M42.739 7.64078C32.8938 -2.10809 17.0097 -2.03005 7.26088 7.81515C-2.42029 17.592 -2.42029 33.3422 7.26088 43.1191C17.1061 52.8679 32.9902 52.7899 42.739 42.9447C52.4202 33.1679 52.4202 17.4176 42.739 7.64078ZM25 48.4512C12.2783 48.4512 1.92868 38.1016 1.92868 25.3799C1.92868 12.6581 12.2782 2.30869 25 2.30869C37.7217 2.30869 48.0712 12.6583 48.0712 25.38C48.0712 38.1017 37.7216 48.4512 25 48.4512Z"
+								fill="#274760"
 							/>
-						</div>
-						<div className="flex flex-col items-start gap-1">
-							<h3 className="text-base font-semibold text-primary">
-								{item.label}
-							</h3>
-							<span className="text-slate-400 font-normal text-sm">
-								{item.text}
-							</span>
-						</div>
-					</div>
-				))}
-				<div className=""><DefaultButton text="Book Now" /></div>
+							<path
+								d="M38.5997 24.5064V24.5076L18.2309 12.7479C17.7488 12.4696 17.1323 12.6347 16.854 13.1169C16.7656 13.27 16.719 13.4436 16.719 13.6204V37.1397C16.7192 37.6963 17.1708 38.1475 17.7274 38.1471C17.9042 38.147 18.0779 38.1005 18.231 38.0121L38.5998 26.2524C39.082 25.9742 39.2472 25.3577 38.969 24.8755C38.8804 24.7222 38.7531 24.5949 38.5997 24.5064Z"
+								fill="#274760"
+							/>
+						</g>
+						<defs>
+							<clipPath id="clip0_1_27">
+								<rect
+									width="50"
+									height="50"
+									fill="white"
+									transform="translate(0 0.379883)"
+								/>
+							</clipPath>
+						</defs>
+					</svg>
+					See how we work
+				</Button>
 			</div>
+			<Image
+				src="/images/hero_img.png"
+				alt=""
+				width={688.15}
+				height={600}
+				className="object-cover absolute right-0 bottom-0"
+			/>
 		</div>
 	);
 };

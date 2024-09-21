@@ -1,5 +1,5 @@
 type ButtonProps = {
-	variant?: "default" | "linear_color" | "outline";
+	variant?: "default" | "linear_color" | "outline" | "ghost";
 	children: React.ReactNode;
 	className?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -20,7 +20,9 @@ const Button: React.FC<ButtonProps> = ({
 		case "outline":
 			variantClasses = "bg-none border border-dark-blue text-dark-blue";
 			break;
-
+		case "ghost":
+			variantClasses = "bg-none border border-none text-dark-blue";
+			break;
 		default:
 			variantClasses = "bg-blue/20 text-dark-blue";
 
