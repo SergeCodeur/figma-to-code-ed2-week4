@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 const SidebarLink = () => {
 	const pathname = usePathname();
 
-	const isLinkActive = (label: string) => {
-		return pathname.includes(label);
+	const isLinkActive = (href: string) => {
+		return pathname === href;
 	};
 
 	return (
@@ -15,7 +15,7 @@ const SidebarLink = () => {
 			{sidebarLinks.map((link, index) => (
 				<Link
 					className={`${
-						isLinkActive(link.label) ? "bg-blue/20 font-semibold" : ""
+						isLinkActive(link.href) ? "bg-blue/20 font-semibold" : ""
 					} text-base py-2.5 px-3 rounded-ls flex items-center gap-2.5 w-full`}
 					key={index}
 					href={link.href}
