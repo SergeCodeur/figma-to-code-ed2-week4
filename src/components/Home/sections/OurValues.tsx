@@ -1,5 +1,5 @@
 "use client";
-import ValueCard from "@/components/cards/ValueCard";
+import ValueCard from "@/components/Home/cards/ValueCard";
 import Title from "@/components/ui/Title";
 import { OurValue } from "@/constants/OurValues";
 

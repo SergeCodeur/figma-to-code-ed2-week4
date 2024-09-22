@@ -1,4 +1,4 @@
-import DepartementCard from "@/components/cards/DepartementCard";
+import DepartementCard from "@/components/Home/cards/DepartementCard";
 import Title from "@/components/ui/Title";
 import { DepartmentsList } from "@/constants/Departement";
 

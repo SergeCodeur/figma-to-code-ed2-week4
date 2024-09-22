@@ -1,17 +1,17 @@
 "use client";
 
-import { Cancel, Hamburger } from "@/assets/icons";
+import { Cancel, ChevronRight, Hamburger } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Button from "../ui/Button";
-import NavLinks from "./nav-likns";
+import NavLinks from "./NavLinks";
 
 const NavBar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	return (
-		<nav className="bg-background px-2 md:px-20 py-2 w-full flex items-center justify-between">
+		<nav className="bg-background container py-2 w-full flex items-center justify-between">
 			<Link href={"/"}>
 				<Image
 					src={"/images/logo_light.svg"}
@@ -39,10 +39,9 @@ const NavBar = () => {
 			</div>
 
 			<div className="hidden lg:flex w-52  items-center justify-end">
-				<Button variant="linear_color">
-					Book now
-					
-					</Button>
+				<Button variant="linear_color_shadow">
+					Book now <ChevronRight />
+				</Button>
 			</div>
 		</nav>
 	);
