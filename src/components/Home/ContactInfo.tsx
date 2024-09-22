@@ -1,5 +1,5 @@
-import { Location, Phone, Stethoscope } from "@/assets/icons";
-import Button from "../ui/Button";
+import { ChevronRight, Location, Phone, Stethoscope } from "@/assets/icons";
+import Link from "next/link";
 import ContactItem from "./ContactItem";
 
 const ContactInfo = () => {
@@ -20,7 +20,12 @@ const ContactInfo = () => {
 				title="Location"
 				description="New York, US"
 			/>
-			<Button variant="linear_color_shadow">Book Now →</Button>
+			<Link
+				href="/doctor-login"
+				className="bg-gradient-to-b from-[#307bc4] to-[#274760] text-white shadow-light-blue !rounded-3xl px-8 py-3 flex justify-center items-center gap-2.5"
+			>
+				Book now <ChevronRight />
+			</Link>
 		</div>
 	);
 };

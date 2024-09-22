@@ -4,7 +4,6 @@ import { Cancel, ChevronRight, Hamburger } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Button from "../ui/Button";
 import NavLinks from "./NavLinks";
 
 const NavBar = () => {
@@ -39,9 +38,12 @@ const NavBar = () => {
 			</div>
 
 			<div className="hidden lg:flex w-52  items-center justify-end">
-				<Button variant="linear_color_shadow">
+				<Link
+					href="/sign-up"
+					className="bg-gradient-to-b from-[#307bc4] to-[#274760] text-white shadow-light-blue !rounded-3xl px-8 py-3 flex justify-center items-center gap-2.5"
+				>
 					Book now <ChevronRight />
-				</Button>
+				</Link>
 			</div>
 		</nav>
 	);
