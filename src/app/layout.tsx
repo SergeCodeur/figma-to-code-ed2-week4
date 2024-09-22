@@ -1,7 +1,7 @@
+import NavBar from "@/components/Navigation/NavBar";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/Navigation/nav-bar";
 
 export const metadata: Metadata = {
 	title: "Medical Plaform",
