@@ -33,7 +33,7 @@ const HeroSection = () => {
 			<div className="relative h-[600px] container bg-hero-bg bg-cover bg-center">
 				<div className="absolute left-0 top-2/4 -translate-y-2/4 max-w-[670px] w-full pl-[73px] space-y-10">
 					<div className="space-y-7">
-						<h1 className="text-6xl font-bold leading-[58px]">
+						<h1 className="text-5xl font-bold leading-[58px]">
 							Your Partner in Health and Wellness
 						</h1>
 						<p className="text-xl">

@@ -4,7 +4,8 @@ import HeroSection from "@/components/Home/sections/HeroSection";
 import OurValues from "@/components/Home/sections/OurValues";
 import ReviewsSection from "@/components/Home/sections/Reviews";
 import NavBar from "@/components/Navigation/NavBar";
-
+import CTA from "@/components/Home/sections/CTA";
+ 
 export default function Home() {
 	return (
 		<main>
@@ -14,6 +15,8 @@ export default function Home() {
 			<AboutUs />
 			<Departments />
 			<ReviewsSection />
+			<CTA/>
+			 
 		</main>
 	);
 }
