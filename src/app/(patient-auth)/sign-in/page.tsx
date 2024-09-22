@@ -1,15 +1,17 @@
 "use client";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import Arrow from "../ui/arrow";
-import Button from "../ui/button";
 import Input from "../ui/input";
-import useLogin from "./userLogin";
 import { logInForm } from "../utils/data";
+// import useLogin from "./userLogin";
 
 const SignIn = () => {
 	const [animate, setAnimate] = useState(false);
-	const { formData, errors, handleLogin, handleChange } = useLogin();
+	const router = useRouter();
+	// const { formData, errors, handleLogin, handleChange } = useLogin();
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setAnimate(true);
@@ -19,16 +21,16 @@ const SignIn = () => {
 	return (
 		<div className="flex flex-col justify-center items-center space-y-10">
 			<div className="flex flex-col space-y-3 ">
-				<span className="font-extrabold text-3xl text-foreground">Log In</span>
-				<span className="text-base text-foreground">
+				<h2 className="font-bold text-3xl text-foreground">Log In</h2>
+				<p className="text-base text-foreground">
 					Welcome back! Enter your email and password to access your account.
-				</span>
+				</p>
 			</div>
 			<form
 				className={`flex flex-col space-y-4 w-full ${
 					animate ? "move-in-left" : "opacity-0"
 				}`}
-				onSubmit={handleLogin}
+				// onSubmit={handleLogin}
 			>
 				{logInForm.map(({ name, label, placeholder }) => (
 					<div className="flex flex-col space-y-2" key={name}>
@@ -36,17 +38,17 @@ const SignIn = () => {
 						<Input
 							type={name === "email" ? "email" : "password"}
 							name={name}
-							className="input-block"
-							value={formData[name as keyof typeof formData]}
-							onChange={handleChange}
+							className="w-full px-3 py-2 border border-blue/50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							// value={formData[name as keyof typeof formData]}
+							// onChange={handleChange}
 							placeholder={placeholder}
 							required
 						/>
-						{errors[name as keyof typeof formData] && (
+						{/* {errors[name as keyof typeof formData] && (
 							<span className="text-sm text-red-500">
 								{errors[name as keyof typeof formData]}
 							</span>
-						)}
+						)} */}
 					</div>
 				))}
 				<div className="flex items-center justify-between space-x-3">
@@ -75,8 +77,11 @@ const SignIn = () => {
 				</div>
 				<div className="flex flex-col space-y-2">
 					<Button
-						className="flex py-2 text-center bg-gradient-to-r from-bleu
-				 to-foreground rounded-full w-2/5 justify-center items-center space-x-2"
+						variant="linear_color"
+						className="w-[200px] !rounded-3xl"
+						onClick={() => {
+							router.push("/dashboard-patient");
+						}}
 					>
 						<span className="text-white text-base">Log in</span>
 						<Arrow />

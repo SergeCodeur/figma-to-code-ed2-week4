@@ -1,8 +1,7 @@
 "use client";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import Arrow from "../ui/arrow";
-import Button from "../ui/button";
+import { useEffect, useState } from "react";
 import Input from "../ui/input";
 
 const RecoverPassword = () => {
@@ -25,7 +24,7 @@ const RecoverPassword = () => {
 				</span>
 			</div>
 			<div
-				className={`flex flex-col space-y-4 w-full  ${
+				className={`flex flex-col space-y-4 w-full p-2 ${
 					isVisible ? "fall-in" : "fall-in-init"
 				}`}
 			>
@@ -33,24 +32,18 @@ const RecoverPassword = () => {
 					<label className="ml-2 text-[#414870] text-sm">Email</label>
 
 					<Input
-						className="input-block"
+						className="w-full px-3 py-2 border border-blue/50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 						placeholder="john@gmail.com"
 						type="email"
 					/>
 				</div>
 
-				<div className="flex space-x-2">
-					<Button
-						className="py-2 text-center bg-gradient-to-r from-bleu
-				 to-foreground rounded-full w-full"
-					>
+				<div className="flex space-x-2 items-center">
+					<Button variant="linear_color" className="w-full">
 						<span className="text-white text-base">Submit</span>
 					</Button>
 					<Link href="/sign-in" className="text-white text-base w-full">
-						<Button
-							className="py-2 text-center bg-gradient-to-r from-[#999898]
-				 to-[#1f1e1e] rounded-full w-full"
-						>
+						<Button variant="default" className="w-full h-11">
 							Cancel
 						</Button>
 					</Link>
