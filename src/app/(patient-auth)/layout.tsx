@@ -1,23 +1,23 @@
 import Image from "next/image";
 import Card from "./ui/card";
 
-export default function AuthLayout({
+export default function PatientAuthLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
 		<div className="flex h-screen w-screen">
-			<div className="hidden flex-1 bg-gradient-to-r from-[#D2EAEF] to-[#86BBF1] bg-cover order-last lg:flex">
+			<div className="hidden flex-1 bg-gradient-to-r from-[#D2EAEF] to-[#86BBF1] bg-cover order-last lg:flex relative">
 				<div className="space-y-12 w-full">
 					<div className="space-y-3 pt-8 pl-12 flex flex-col">
-						<span className="text-3xl text-foreground font-extrabold">
+						<h3 className="text-3xl text-foreground font-bold">
 							We give the best experience
-						</span>
-						<span className="max-w-sm text-foreground text-base">
+						</h3>
+						<p className="max-w-sm text-foreground text-base">
 							Dedicated virtual-consultation platform for doctors and patients
 							to help them consult across various channels
-						</span>
+						</p>
 					</div>
 					<div className="space-y-4">
 						<div className="flex justify-center items-center">
@@ -49,9 +49,9 @@ export default function AuthLayout({
 							<Image
 								src="/images/doctor.png"
 								alt={`doctor picture`}
-								className=""
-								width={160}
-								height={10}
+								className="absolute bottom-0 right-0"
+								width={260}
+								height={200}
 								priority
 							/>
 						</div>

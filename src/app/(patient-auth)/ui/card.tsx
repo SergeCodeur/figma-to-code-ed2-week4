@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { FC } from "react";
+import { FC } from "react";
 import Rating from "./rating";
 interface ICard {
 	name: string;
@@ -35,7 +35,7 @@ const Card: FC<ICard> = props => {
 					<div className="flex space-x-1">{renderRatings}</div>
 				</div>
 			</div>
-			<p className="font-normal text-sm text-[#27476080]">{text}</p>
+			<p className="font-normal text-sm text-dark-blue/50">{text}</p>
 		</div>
 	);
 };
