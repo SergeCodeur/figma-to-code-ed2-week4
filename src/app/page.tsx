@@ -1,8 +1,8 @@
-import AboutUs from "@/components/Home/about-us";
-import Departments from "@/components/Home/departments";
-import HeroSection from "@/components/Home/hero-section";
-import OurValues from "@/components/Home/our-values";
-import Reviews from "@/components/Home/reviews";
+import AboutUs from "@/components/Home/sections/AboutUs";
+import Departments from "@/components/Home/sections/Departments";
+import HeroSection from "@/components/Home/sections/HeroSection";
+import OurValues from "@/components/Home/sections/OurValues";
+import ReviewsSection from "@/components/Home/sections/Reviews";
 
 export default function Home() {
 	return (
@@ -11,7 +11,7 @@ export default function Home() {
 			<OurValues />
 			<AboutUs />
 			<Departments />
-			<Reviews />
+			<ReviewsSection />
 		</main>
 	);
 }
