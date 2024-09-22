@@ -7,12 +7,37 @@ const config: Config = {
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
+		container: {
+			center: true,
+			padding: {
+				DEFAULT: "1.25rem",
+				sm: "2rem",
+				md: "1.25rem",
+				lg: "4rem",
+				"2xl": "3rem",
+			},
+			screens: {
+				"2xl": "1350px",
+				xl: "1200px",
+				lg: "992px",
+				md: "768px",
+				sm: "576px",
+			},
+		},
 		extend: {
+			backgroundImage: {
+				"hero-bg": "url('/images/hero_bg.webp')",
+				"hero-img": "url('/images/hero_image.webp')",
+				"dep-bg": "url('/images/departements-bg.png')",
+			},
 			colors: {
 				background: "#ffffff",
 				foreground: "#274760",
 				gray: "#e6e6e6",
 				blue: "#307bc4",
+				sky: {
+					500: "#307BC4",
+				},
 				"dark-blue": "#274760",
 				white: "#ffffff",
 				"linear-light-blue": "var(--linear-light-blue)",
@@ -20,6 +45,10 @@ const config: Config = {
 			},
 			borderRadius: {
 				ls: "10px",
+			},
+			boxShadow: {
+				"light-blue": "0px 4px 20px rgba(39, 71, 96, 0.17)",
+				card: "0px 4px 21px 1px rgba(48, 123, 196, 0.1)",
 			},
 		},
 	},
