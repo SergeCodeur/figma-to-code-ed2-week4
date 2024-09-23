@@ -7,7 +7,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
 	description,
 }) => {
 	return (
-		<div className="contact-item flex items-center space-x-2">
+		<div className="contact-item flex items-center space-x-2 min-w-48">
 			<div className="icon bg-[#307BC4] p-2 rounded-full">{icon}</div>
 			<div>
 				<h4 className="font-medium">{title}</h4>
