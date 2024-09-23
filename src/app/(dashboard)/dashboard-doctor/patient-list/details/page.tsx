@@ -8,18 +8,23 @@ const PatientDetails = () => {
 	return (
 		<div className="w-full space-y-7">
 			<div className="flex justify-start gap-2.5">
-				<Link href="/dashboard-doctor/patient-list" className="font-semibold">
+				<Link
+					href="/dashboard-doctor/patient-list"
+					className="font-semibold text-xs md:text-sm"
+				>
 					Patient List
 				</Link>
-				<ArrowRight />
-				<p>Patien details</p>
+				<ArrowRight width={16} height={16} />
+				<p className="text-xs md:text-sm">Patient details</p>
 			</div>
 			<div className="flex max-md:flex-col gap-5 min-h-52 justify-center">
 				<div className="md:max-w-96 w-full">
 					<PatientDetailsCard />
 				</div>
 				<div className="flex-1 p-5 border border-dark-blue/20 rounded-2xl h-full max-w-[780px]">
-					<h3 className="font-semibold text-xl mb-2">Past Notes Appointment</h3>
+					<h3 className="font-semibold text-lg md:text-xl mb-2">
+						Past Notes Appointment
+					</h3>
 					<div className="overflow-y-auto max-h-[700px]">
 						<AppointmentNoteCard
 							date="June 12, 2024"
