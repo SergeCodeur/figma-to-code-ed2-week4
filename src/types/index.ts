@@ -57,3 +57,13 @@ export interface ICard {
 	color: string;
 	text: string;
 }
+
+export type AppointmentNoteDetailsProps = {
+	title: string;
+	description: string;
+	treatment: string;
+	time: string;
+	duration?: string;
+	document?: string;
+	date?: string;
+};
