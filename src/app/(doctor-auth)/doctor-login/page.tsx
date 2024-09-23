@@ -1,7 +1,7 @@
 "use client";
-import Arrow from "@/app/(patient-auth)/ui/arrow";
-import Input from "@/app/(patient-auth)/ui/input";
+import Input from "@/app/(patient-auth)/ui/Input";
 import { logInForm } from "@/app/(patient-auth)/utils/data";
+import Arrow from "@/assets/icons/arrow";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
 // import useRegister from "./userRegister";

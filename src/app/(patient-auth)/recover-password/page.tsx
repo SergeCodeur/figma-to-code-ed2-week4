@@ -2,7 +2,7 @@
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Input from "../ui/input";
+import Input from "../ui/Input";
 
 const RecoverPassword = () => {
 	const [isVisible, setIsVisible] = useState(false);

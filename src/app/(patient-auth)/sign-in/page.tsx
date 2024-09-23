@@ -3,8 +3,8 @@ import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Arrow from "../ui/arrow";
-import Input from "../ui/input";
+import Arrow from "../../../assets/icons/arrow";
+import Input from "../ui/Input";
 import { logInForm } from "../utils/data";
 // import useLogin from "./userLogin";
 
