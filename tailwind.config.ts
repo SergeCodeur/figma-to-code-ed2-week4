@@ -50,6 +50,9 @@ const config: Config = {
 				"light-blue": "0px 4px 20px rgba(39, 71, 96, 0.17)",
 				card: "0px 4px 21px 1px rgba(48, 123, 196, 0.1)",
 			},
+			screens: {
+				xs: "375px",
+			},
 		},
 	},
 	plugins: [],
