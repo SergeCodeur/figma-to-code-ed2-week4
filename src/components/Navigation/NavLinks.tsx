@@ -3,25 +3,24 @@ import { Navlinks } from "@/constants/NavLinks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NavLinks = () => {
-	//
+const NavLinks = ({ className }: { className?: string }) => {
 	const pathname = usePathname();
 
-	//
 	return (
-		<div className="flex lg:flex-row w-full flex-col items-center justify-center gap-6 py-6 lg:p-0">
+		<ul className={`${className}`}>
 			{Navlinks.map(link => (
-				<Link
-					key={link.href}
-					href={link.href}
-					className={`text-primary font-medium text-base ${
-						pathname === link.href ? "border-b border-primary" : ""
-					}`}
-				>
-					{link.label}
-				</Link>
+				<li key={link.href}>
+					<Link
+						href={link.href}
+						className={`text-primary font-medium text-base ${
+							pathname === link.href ? "border-b border-primary" : ""
+						}`}
+					>
+						{link.label}
+					</Link>
+				</li>
 			))}
-		</div>
+		</ul>
 	);
 };
 

@@ -29,13 +29,16 @@ const NavBar = () => {
 				</button>
 			</div>
 
-			<div
+			<NavLinks className="hidden lg:flex w-full items-center justify-center gap-6 py-6" />
+
+			{/* Mobile nav */}
+			<NavLinks
 				className={`${
-					menuOpen ? "block" : "lg:block md:hidden hidden"
-				} z-20 absolute top-16 left-0 w-full lg:bg-background lg:static bg-zinc-200 p-5 md:flex md:items-center md:justify-center md:gap-5`}
-			>
-				<NavLinks />
-			</div>
+					menuOpen
+						? " pointer-events-auto opacity-100"
+						: "opacity-0 pointer-events-none"
+				} flex lg:hidden transition-opacity duration-300 ease-in-out flex-col absolute inset-x-0 top-16 bg-white z-20 w-full items-center justify-center gap-6 py-6`}
+			/>
 
 			<div className="hidden lg:flex w-52  items-center justify-end">
 				<Link

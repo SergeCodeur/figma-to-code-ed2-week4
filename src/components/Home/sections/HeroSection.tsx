@@ -1,42 +1,17 @@
-// interface Item {
-// 	src: string;
-// 	label: string;
-// 	text: string;
-// }
-
 import Image from "next/image";
 import Button from "../../ui/Button";
 import ContactInfo from "../ContactInfo";
 
 const HeroSection = () => {
-	// //
-	// const items: Item[] = [
-	// 	{
-	// 		src: "/icons/hotline.svg",
-	// 		label: "Hotline",
-	// 		text: "123-456-7890",
-	// 	},
-	// 	{
-	// 		src: "/icons/ambulance.svg",
-	// 		label: "Ambulance",
-	// 		text: "876-256-876",
-	// 	},
-	// 	{
-	// 		src: "/icons/location_2.svg",
-	// 		label: "Location",
-	// 		text: "New York, US",
-	// 	},
-	// ];
-	//
 	return (
 		<div className="relative">
 			<div className="relative h-[600px] container bg-hero-bg bg-cover bg-center">
-				<div className="absolute left-0 top-2/4 -translate-y-2/4 max-w-[670px] w-full pl-[73px] space-y-10">
-					<div className="space-y-7">
-						<h1 className="text-6xl font-bold leading-[58px]">
+				<div className="lg:absolute lg:left-0 lg:top-2/4 max-lg:pt-20 max-lg:text-center lg:-translate-y-2/4 lg:max-w-[670px] w-full lg:pl-[73px] space-y-10">
+					<div className="md:space-y-7">
+						<h1 className="text-2xl sm:text-5xl lg:text-6xl max-lg:text-center font-bold sm:leading-[58px]">
 							Your Partner in Health and Wellness
 						</h1>
-						<p className="text-xl">
+						<p className="text-sm sm:text-xl max-lg:text-center">
 							We are committed to providing you with the best medical and
 							healthcare services to help you live healthier and happier.
 						</p>
@@ -78,9 +53,9 @@ const HeroSection = () => {
 					alt=""
 					width={688.15}
 					height={600}
-					className="object-cover absolute right-0 bottom-0"
+					className="object-cover absolute right-0 bottom-0 max-lg:hidden"
 				/>
-				<div className="absolute left-2/4 -translate-x-2/4 -bottom-[91px] w-full max-w-[1296px]">
+				<div className="lg:absolute lg:left-2/4 lg:-translate-x-2/4 lg:-bottom-[91px] max-lg:translate-y-40 w-full max-w-[1296px] max-xs:hidden">
 					<ContactInfo />
 				</div>
 			</div>

@@ -7,9 +7,9 @@ const Departments = () => {
 	//
 
 	return (
-		<div className="mt-20 container w-full">
-			<div className="relative flex items-center justify-center flex-col">
-				<div className="w-full h-60 lg:h-80 bg-dep-bg bg-cover bg-no-repeat rounded-3xl absolute top-0 left-0 -z-10"></div>
+		<section className="mt-20 container w-full">
+			<div className="relative flex items-center justify-center flex-col py-5">
+				<div className="w-full h-full lg:h-80 bg-dep-bg bg-cover bg-center bg-no-repeat rounded-3xl absolute top-0 left-0 -z-10"></div>
 				<div className="bg-transparent flex items-start justify-between flex-col mt-20 lg:mt-28 gap-10 w-full min-h-80">
 					<div className="w-full">
 						<Title className="text-center">Departments</Title>
@@ -21,7 +21,7 @@ const Departments = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

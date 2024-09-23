@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const AboutUs = () => {
 	return (
-		<section className="mt-28 mb-64 container flex justify-between relative">
-			<div className="relative">
+		<section className="mt-28 lg:mb-64 container flex justify-between max-lg:flex-col-reverse gap-y-36 lg:gap-y-9 relative">
+			<div className="relative flex lg:justify-start justify-center">
 				<Image
 					src={"/images/men-take-appointment.png"}
 					alt="Men take appointment"
@@ -13,29 +13,28 @@ const AboutUs = () => {
 					height={483}
 				/>
 				<Image
-					className="absolute -top-16 -right-16"
+					className="absolute -top-20 lg:-top-16 right-2/4 translate-x-2/4 lg:-right-16 object-cover"
 					src={"/images/about-us-top.webp"}
 					alt="About Us"
 					height={128}
 					width={146}
-					objectFit="cover"
 				/>
 				<Image
 					src={"/images/about-us-bottom.webp"}
 					alt="About Us"
 					height={352}
 					width={320}
-					className="absolute -bottom-1/3 -right-1/3 -translate-x-4"
+					className="max-lg:hidden absolute -bottom-1/3 -right-1/3 -translate-x-4"
 				/>
 			</div>
-			<div className="w-full max-w-xl space-y-20">
-				<div className="w-full flex flex-col items-start gap-1">
+			<div className="w-full max-w-xl max-lg:mx-auto max-lg:mt-8 space-y-8 lg:space-y-20">
+				<div className="w-full flex flex-col items-center lg:items-start gap-1">
 					<Title>About Us</Title>
-					<h4 className="text-lg lg:text-2xl font-semibold uppercase text-sky-500">
+					<h4 className="text-base lg:text-2xl font-semibold uppercase text-sky-500">
 						PRO HEALTH
 					</h4>
 				</div>
-				<div className="flex flex-col items-start gap-6">
+				<div className="flex flex-col items-start gap-3 lg:gap-6">
 					<div className="flex items-start gap-2">
 						<span className="w-9 block">
 							<svg
@@ -51,11 +50,11 @@ const AboutUs = () => {
 								/>
 							</svg>
 						</span>
-						<div className="">
-							<h5 className="font-normal text-2xl text-dark-blue/50">
+						<div>
+							<h5 className="font-normal md:text-2xl text-base text-dark-blue/50">
 								ProHealth is a team of experienced medical professionals
 							</h5>
-							<p className="mt-6 font-normal text-base text-dark-blue/50">
+							<p className="mt-6 font-normal text-sm md:text-base text-dark-blue/50">
 								Dedicated to providing top-quality healthcare services. We
 								believe in a holistic approach to healthcare that focuses on
 								treating the whole person, not just the illness or symptoms.
@@ -69,7 +68,7 @@ const AboutUs = () => {
 				alt="bg linear"
 				width={1244}
 				height={877}
-				className="absolute right-0 top-2/4 -translate-y-2/4"
+				className="absolute right-0 top-1/4 lg:top-2/4 -translate-y-2/4 z-[-1]"
 			/>
 		</section>
 	);

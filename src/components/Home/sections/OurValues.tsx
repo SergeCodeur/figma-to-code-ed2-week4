@@ -6,7 +6,7 @@ import { OurValue } from "@/constants/OurValues";
 const OurValues = () => {
 	//
 	return (
-		<div className="mt-52 container">
+		<div className="xs:mt-52 mt-16 container">
 			<Title className="text-center">Our Value</Title>
 			<div className="mt-10 flex flex-wrap gap-10 justify-center items-center">
 				{OurValue.map((val, i) => (
