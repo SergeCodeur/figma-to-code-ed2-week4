@@ -1,11 +1,8 @@
-import DepartementCard from "@/components/Home/cards/DepartementCard";
+import DepartementCard from "@/components/home/cards/DepartementCard";
 import Title from "@/components/ui/Title";
 import { DepartmentsList } from "@/constants/Departement";
 
 const Departments = () => {
-	//
-	//
-
 	return (
 		<section className="mt-20 container w-full">
 			<div className="relative flex items-center justify-center flex-col py-5">

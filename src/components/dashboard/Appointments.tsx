@@ -1,8 +1,8 @@
 "use client";
 
 import { Calendar } from "@/assets/icons";
-import AppointmentCard from "./AppointmentCard";
-import Button from "./ui/Button";
+import Button from "../ui/Button";
+import AppointmentCard from "./cards/AppointmentCard";
 const Appointments = () => {
 	return (
 		<div>

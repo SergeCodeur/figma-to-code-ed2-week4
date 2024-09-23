@@ -24,7 +24,7 @@ const PatientCard = ({
 
 	return (
 		<div
-			className={`${className} p-5 bg-white rounded-2xl border border-dark-blue/20 h-full flex flex-col justify-between gap-2.5`}
+			className={`${className} p-5 bg-white rounded-2xl border border-dark-blue/20 h-full flex flex-col justify-between gap-2.5 min-w-64`}
 		>
 			<div className="space-y-2 pb-5 border-b border-dark-blue/20">
 				<div className="flex items-center justify-between">

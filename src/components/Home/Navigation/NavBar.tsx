@@ -42,7 +42,7 @@ const NavBar = () => {
 
 			<div className="hidden lg:flex w-52  items-center justify-end">
 				<Link
-					href="/sign-up"
+					href="/role-selection"
 					className="bg-gradient-to-b from-[#307bc4] to-[#274760] text-white shadow-light-blue !rounded-3xl px-8 py-3 flex justify-center items-center gap-2.5"
 				>
 					Book now <ChevronRight />

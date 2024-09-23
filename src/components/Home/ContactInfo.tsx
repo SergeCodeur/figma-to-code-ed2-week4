@@ -4,7 +4,7 @@ import ContactItem from "./ContactItem";
 
 const ContactInfo = () => {
 	return (
-		<div className="bg-background p-7 lg:p-20 rounded-2xl flex flex-wrap h-fit justify-between items-center shadow-card lg:h-36 gap-y-5">
+		<div className="bg-background p-7 lg:p-20 rounded-2xl flex flex-wrap h-fit justify-between items-center shadow-card gap-y-5">
 			<ContactItem
 				icon={<Phone />}
 				title="Hotline"
@@ -21,7 +21,7 @@ const ContactInfo = () => {
 				description="New York, US"
 			/>
 			<Link
-				href="/doctor-login"
+				href="/role-selection"
 				className="bg-gradient-to-b from-[#307bc4] to-[#274760] text-white shadow-light-blue !rounded-3xl px-8 py-3 lg:flex justify-center items-center gap-2.5 hidden"
 			>
 				Book now <ChevronRight />
