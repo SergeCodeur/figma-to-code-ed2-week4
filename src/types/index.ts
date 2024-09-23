@@ -57,3 +57,46 @@ export interface ICard {
 	color: string;
 	text: string;
 }
+
+export type AppointmentNoteDetailsProps = {
+	title: string;
+	description: string;
+	treatment: string;
+	time: string;
+	duration?: string;
+	document?: string;
+	date?: string;
+};
+
+export interface DatePickerProps {
+	id: string;
+	name: string;
+	value: string;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	className?: string;
+}
+
+export interface InputProps {
+	type: string;
+	id: string;
+	name: string;
+	placeholder?: string;
+	className?: string;
+	value?: string;
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface LabelProps {
+	htmlFor: string;
+	label: string;
+	className?: string;
+}
+
+export interface SelectProps {
+	id: string;
+	value: string;
+	name?: string;
+	onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+	options: string[];
+	className?: string;
+}

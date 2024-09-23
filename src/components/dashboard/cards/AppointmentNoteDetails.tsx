@@ -1,14 +1,6 @@
-export type AppointmentNoteDetailsProps = {
-	title: string;
-	description: string;
-	treatment: string;
-	time: string;
-	duration?: string;
-	document?: string;
-	date?: string;
-};
+import { AppointmentNoteDetailsProps } from "@/types";
 
-const AppointmentNoteDetails: React.FC<AppointmentNoteDetailsProps> = ({
+const AppointmentNoteDetailsCard: React.FC<AppointmentNoteDetailsProps> = ({
 	title,
 	description,
 	treatment,
@@ -56,4 +48,4 @@ const AppointmentNoteDetails: React.FC<AppointmentNoteDetailsProps> = ({
 	);
 };
 
-export default AppointmentNoteDetails;
+export default AppointmentNoteDetailsCard;

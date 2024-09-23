@@ -33,6 +33,23 @@ body {
 	background-color: #e5e7eb; /* Light gray for the track */
 }
 
+/* remove default date picker icon */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	display: none;
+	-webkit-appearance: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+	display: none;
+	-webkit-appearance: none;
+}
+
+input[type="date"]::-webkit-outer-spin-button {
+	display: none;
+	-webkit-appearance: none;
+}
+
 @layer components {
 	@keyframes moveInLeft {
 		from {
