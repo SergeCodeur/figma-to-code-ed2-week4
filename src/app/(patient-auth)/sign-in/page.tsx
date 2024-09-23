@@ -21,8 +21,10 @@ const SignIn = () => {
 	return (
 		<div className="flex flex-col justify-center items-center space-y-10">
 			<div className="flex flex-col space-y-3 ">
-				<h2 className="font-bold text-3xl text-foreground">Log In</h2>
-				<p className="text-base text-foreground">
+				<h2 className="font-bold text-2xl lg:text-3xl text-foreground">
+					Log In
+				</h2>
+				<p className="text-sm lg:text-base text-foreground">
 					Welcome back! Enter your email and password to access your account.
 				</p>
 			</div>
@@ -34,11 +36,12 @@ const SignIn = () => {
 			>
 				{logInForm.map(({ name, label, placeholder }) => (
 					<div className="flex flex-col space-y-2" key={name}>
-						<label className="ml-2 text-[#414870] text-sm">{label}</label>
+						<label className="ml-2 text-[#414870] text-xs md:text-sm">
+							{label}
+						</label>
 						<Input
 							type={name === "email" ? "email" : "password"}
 							name={name}
-							className="w-full px-3 py-2 border border-blue/50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 							// value={formData[name as keyof typeof formData]}
 							// onChange={handleChange}
 							placeholder={placeholder}
@@ -61,12 +64,12 @@ const SignIn = () => {
 						/>
 						<label
 							htmlFor="remember-me"
-							className="ml-2 block text-sm text-foreground"
+							className="ml-2 block text-xs md:text-sm text-foreground"
 						>
 							Remember me
 						</label>
 					</div>
-					<div className="text-sm">
+					<div className="text-xs md:text-sm">
 						<Link
 							href="/recover-password"
 							className="text-foreground ml-2 hover:font-extrabold"
@@ -83,7 +86,7 @@ const SignIn = () => {
 							router.push("/dashboard-patient");
 						}}
 					>
-						<span className="text-white text-base">Log in</span>
+						<span className="text-white">Log in</span>
 						<Arrow />
 					</Button>
 					<span className="text-xs text-foreground">
