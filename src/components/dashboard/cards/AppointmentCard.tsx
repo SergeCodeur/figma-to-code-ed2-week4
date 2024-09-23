@@ -2,8 +2,8 @@
 import { AppointmentCardProps } from "@/types/AppointmentCardProps";
 import Image from "next/image";
 import { useState } from "react";
+import Button from "../../ui/Button";
 import AppointmentDetails from "./AppointmentDetails"; // Import the new component
-import Button from "./ui/Button";
 
 const AppointmentCard = ({
 	image,

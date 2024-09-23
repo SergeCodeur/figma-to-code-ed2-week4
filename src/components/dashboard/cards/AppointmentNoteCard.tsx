@@ -12,13 +12,13 @@ const AppointmentNoteCard: React.FC<AppointmentNoteCardProps> = ({
 }) => {
 	return (
 		<div className="flex gap-2.5">
-			<div className="pt-6">
+			<div className="pt-6 md:block hidden">
 				<FilledCircle />
 			</div>
 			<div className="py-5 space-y-2.5">
-				<div className="flex gap-2.5">
+				<div className="flex items-center gap-2.5">
 					<Calendar />
-					<h3 className="font-semibold text-base">{date}</h3>
+					<h3 className="font-semibold text-sm md:text-base">{date}</h3>
 				</div>
 				<AppointmentNoteDetailsCard
 					title={details.title}
