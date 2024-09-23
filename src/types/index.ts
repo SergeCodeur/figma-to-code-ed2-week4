@@ -48,3 +48,12 @@ export interface TestimonialsProps {
 	country: string;
 	active?: boolean;
 }
+
+export interface ICard {
+	name: string;
+	image: string;
+	rating: number;
+	fill: number;
+	color: string;
+	text: string;
+}
