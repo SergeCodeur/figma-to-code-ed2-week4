@@ -29,6 +29,7 @@ const config: Config = {
 				"hero-bg": "url('/images/hero_bg.webp')",
 				"hero-img": "url('/images/hero_image.webp')",
 				"dep-bg": "url('/images/departements-bg.png')",
+				"cta-bg": "url('/images/cta_bg.png')",
 			},
 			colors: {
 				background: "#ffffff",
