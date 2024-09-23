@@ -1,8 +1,6 @@
 import { Calendar, FilledCircle } from "@/assets/icons";
-import AppointmentNoteDetails, {
-	AppointmentNoteDetailsProps,
-} from "./AppointmentNoteDetails";
-
+import { AppointmentNoteDetailsProps } from "@/types";
+import AppointmentNoteDetailsCard from "./AppointmentNoteDetails";
 type AppointmentNoteCardProps = {
 	date: string;
 	details: AppointmentNoteDetailsProps;
@@ -22,7 +20,7 @@ const AppointmentNoteCard: React.FC<AppointmentNoteCardProps> = ({
 					<Calendar />
 					<h3 className="font-semibold text-base">{date}</h3>
 				</div>
-				<AppointmentNoteDetails
+				<AppointmentNoteDetailsCard
 					title={details.title}
 					description={details.description}
 					treatment={details.treatment}
