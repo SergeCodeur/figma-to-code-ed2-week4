@@ -1,8 +1,8 @@
 "use client";
 import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Input from "../ui/Input";
 
 const RecoverPassword = () => {
 	const [isVisible, setIsVisible] = useState(false);

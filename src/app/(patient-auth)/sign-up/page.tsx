@@ -1,10 +1,10 @@
 "use client";
+import Arrow from "@/assets/icons/arrow";
 import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Arrow from "../../../assets/icons/arrow";
-import Input from "../ui/Input";
 import { registerForm } from "../utils/data";
 // import useRegister from "./userRegister";
 
