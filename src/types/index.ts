@@ -48,3 +48,15 @@ export interface TestimonialsProps {
 	country: string;
 	active?: boolean;
 }
+
+export interface FAQProps {
+	question: string;
+	reponse: string;
+}
+
+export interface TestimonialsProps {
+	image: string;
+	name: string;
+	country: string;
+	active?: boolean;
+}

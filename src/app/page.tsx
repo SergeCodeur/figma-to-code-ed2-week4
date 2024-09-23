@@ -5,7 +5,10 @@ import OurValues from "@/components/Home/sections/OurValues";
 import ReviewsSection from "@/components/Home/sections/Reviews";
 import NavBar from "@/components/Navigation/NavBar";
 import CTA from "@/components/Home/sections/CTA";
- 
+import FAQ from "@/components/Home/sections/FAQ";
+import Brands from "@/components/Home/sections/Brands";
+import Footer from "@/components/Navigation/Footer";
+
 export default function Home() {
 	return (
 		<main>
@@ -15,8 +18,10 @@ export default function Home() {
 			<AboutUs />
 			<Departments />
 			<ReviewsSection />
-			<CTA/>
-			 
+			<CTA />
+			<FAQ />
+			<Brands />
+			<Footer />
 		</main>
 	);
 }
