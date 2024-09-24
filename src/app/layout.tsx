@@ -3,7 +3,10 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Medical Plaform",
+	title: {
+		default: "Medical Plaform",
+		template: "%s | Medical Plaform",
+	},
 	description: "Plaform to manage medical appointments",
 };
 
