@@ -1,16 +1,9 @@
+import { ICard } from "@/types";
 import Image from "next/image";
 import { FC } from "react";
-import Rating from "./rating";
-interface ICard {
-	name: string;
-	image: string;
-	rating: number;
-	fill: number;
-	color: string;
-	text: string;
-}
+import Rating from "../../../assets/icons/rating";
 
-const Card: FC<ICard> = props => {
+const TestimonialsCard: FC<ICard> = props => {
 	const { image, name, rating, text, fill, color } = props;
 	const renderRatings = Array.from({ length: rating }, (_, index) => (
 		<Rating key={index} color={fill > index ? color : ""} />
@@ -40,4 +33,4 @@ const Card: FC<ICard> = props => {
 	);
 };
 
-export default Card;
+export default TestimonialsCard;
