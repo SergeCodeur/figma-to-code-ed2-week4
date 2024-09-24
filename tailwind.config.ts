@@ -30,6 +30,8 @@ const config: Config = {
 				"hero-img": "url('/images/hero_image.webp')",
 				"dep-bg": "url('/images/departements-bg.png')",
 				"cta-bg": "url('/images/cta_bg.png')",
+				"gradient-blue-green":
+					"linear-gradient(119.31deg, #D2EAEF 17.16%, #86BBF1 89.78%)",
 			},
 			colors: {
 				background: "#ffffff",
@@ -50,6 +52,9 @@ const config: Config = {
 			boxShadow: {
 				"light-blue": "0px 4px 20px rgba(39, 71, 96, 0.17)",
 				card: "0px 4px 21px 1px rgba(48, 123, 196, 0.1)",
+			},
+			screens: {
+				xs: "375px",
 			},
 		},
 	},
