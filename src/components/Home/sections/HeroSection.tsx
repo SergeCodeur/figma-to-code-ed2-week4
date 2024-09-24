@@ -10,7 +10,7 @@ const HeroSection = () => {
 			<div className="relative h-[600px] container bg-hero-bg bg-cover bg-center">
 				<div className="lg:absolute lg:left-0 lg:top-[45%] flex flex-col lg:items-start items-center max-lg:pt-20 max-lg:text-center lg:-translate-y-2/4 lg:max-w-[670px] w-full lg:pl-[73px] space-y-10">
 					<div className="md:space-y-7">
-						<h1 className="text-2xl sm:text-5xl lg:text-6xl max-lg:text-center font-bold sm:leading-[58px]">
+						<h1 className="text-2xl sm:text-5xl lg:text-[56px] max-lg:text-center font-bold sm:leading-[58px]">
 							Your Partner in Health and Wellness
 						</h1>
 						<p className="text-sm sm:text-xl max-lg:text-center">
