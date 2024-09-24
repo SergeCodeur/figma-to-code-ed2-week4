@@ -3,5 +3,5 @@ export default function PatientAuthLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	return <div className="flex h-screen w-screen">{children}</div>;
+	return <div className="flex h-screen w-screen px-5">{children}</div>;
 }

@@ -1,8 +1,12 @@
-"use client";
 import { ArrowRight } from "@/assets/icons";
 import AppointmentNoteCard from "@/components/dashboard/cards/AppointmentNoteCard";
 import PatientDetailsCard from "@/components/dashboard/cards/PatientDetailsCard";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "Patient Details",
+};
 
 const PatientDetails = () => {
 	return (

@@ -1,4 +1,5 @@
 export { default as Analytics } from "./analytics";
+export { default as Arrow } from "./arrow";
 export { default as ArrowDown } from "./arrow-down";
 export { default as ArrowLeft } from "./arrow-left";
 export { default as ArrowRight } from "./arrow-right";

@@ -1,6 +1,11 @@
 import { DownloadSquare, Filter, Search } from "@/assets/icons";
 import PatientListContainer from "@/components/dashboard/PatientListContainer";
 import Button from "@/components/ui/Button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Patient List",
+};
 
 const PatientLists = () => {
 	return (
