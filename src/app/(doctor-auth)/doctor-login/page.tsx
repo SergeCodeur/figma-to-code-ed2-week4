@@ -1,8 +1,8 @@
 "use client";
-import Arrow from "@/app/(patient-auth)/ui/arrow";
-import Input from "@/app/(patient-auth)/ui/input";
 import { logInForm } from "@/app/(patient-auth)/utils/data";
+import Arrow from "@/assets/icons/arrow";
 import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import { useRouter } from "next/navigation";
 // import useRegister from "./userRegister";
 
@@ -24,7 +24,9 @@ const Login = () => {
 			>
 				{logInForm.map(({ name, label, placeholder }) => (
 					<div className="flex flex-col space-y-2" key={name}>
-						<label className="ml-2 text-[#414870] text-sm">{label}</label>
+						<label className="ml-2 text-[#414870] text-xs md:text-sm">
+							{label}
+						</label>
 						<Input
 							type={
 								name === "email"
@@ -34,7 +36,6 @@ const Login = () => {
 									: "text"
 							}
 							name={name}
-							className="w-full px-3 py-2 border border-blue/50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 							// value={formData[name as keyof typeof formData]}
 							// onChange={handleChange}
 							placeholder={placeholder}

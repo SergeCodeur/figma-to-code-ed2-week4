@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Card from "./ui/card";
+import TestimonialsCard from "./ui/TestimonialsCard";
 
 export default function PatientAuthLayout({
 	children,
@@ -21,7 +21,7 @@ export default function PatientAuthLayout({
 					</div>
 					<div className="space-y-4">
 						<div className="flex justify-center items-center">
-							<Card
+							<TestimonialsCard
 								color="text-foreground"
 								fill={4}
 								image="/images/profile.png"
@@ -34,7 +34,7 @@ export default function PatientAuthLayout({
 						</div>
 						<div className="flex space-x-8">
 							<div className="ml-8">
-								<Card
+								<TestimonialsCard
 									color="text-foreground"
 									fill={3}
 									image="/images/profile.png"
