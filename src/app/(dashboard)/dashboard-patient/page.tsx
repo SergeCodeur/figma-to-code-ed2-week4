@@ -2,14 +2,21 @@
 import { Filter } from "@/assets/icons";
 import BookAppointmentContainer from "@/components/dashboard/book-appointment-multi-step-form/BookAppointmentContainer";
 import BookAppointmentButton from "@/components/dashboard/BookAppointmentButton";
-import AppointmentNoteDetails from "@/components/dashboard/cards/AppointmentNoteDetails";
+import AppointmentNoteDetailsCard from "@/components/dashboard/cards/AppointmentNoteDetails";
 import PatientDetailsCardFooter from "@/components/dashboard/cards/PatientDetailsCardFooter";
 import PatientDetailsCardHeader from "@/components/dashboard/cards/PatientDetailsCardHeader";
 import TopNavPatient from "@/components/dashboard/TopNavPatient";
 import Button from "@/components/ui/Button";
+import { AppointmentNoteDetails } from "@/constants/AppointmentNoteDetails";
 import { BookAppointmentProvider } from "@/contexts/BookAppointmentFormContext";
 
 const PatienDashboard = () => {
+	const sortedAppointments = AppointmentNoteDetails.sort((a, b) => {
+		const dateA = a.date ? new Date(a.date) : new Date(0);
+		const dateB = b.date ? new Date(b.date) : new Date(0);
+		return dateB.getTime() - dateA.getTime();
+	});
+
 	return (
 		<BookAppointmentProvider>
 			<div className="w-full space-y-7 relative overflow-y-scroll h-dvh">
@@ -54,48 +61,9 @@ const PatienDashboard = () => {
 								</Button>
 							</div>
 							<div className="overflow-y-auto max-h-[700px] space-y-5">
-								<AppointmentNoteDetails
-									date="June 12, 2024"
-									title="Diabetes Control Appointment"
-									description="Blood sugar management is especially important for people with diabetes as chronicaly high blood sugar levels can lead."
-									treatment="Check-up"
-									time="08 AM -10 AM"
-								/>
-								<AppointmentNoteDetails
-									date="June 12, 2024"
-									title="Diabetes Control Appointment"
-									description="Blood sugar management is especially important for people with diabetes as chronicaly high blood sugar levels can lead."
-									treatment="Check-up"
-									time="08 AM -10 AM"
-								/>
-								<AppointmentNoteDetails
-									date="June 12, 2024"
-									title="Diabetes Control Appointment"
-									description="Blood sugar management is especially important for people with diabetes as chronicaly high blood sugar levels can lead."
-									treatment="Check-up"
-									time="08 AM -10 AM"
-								/>
-								<AppointmentNoteDetails
-									date="June 12, 2024"
-									title="Diabetes Control Appointment"
-									description="Blood sugar management is especially important for people with diabetes as chronicaly high blood sugar levels can lead."
-									treatment="Check-up"
-									time="08 AM -10 AM"
-								/>
-								<AppointmentNoteDetails
-									date="June 12, 2024"
-									title="Diabetes Control Appointment"
-									description="Blood sugar management is especially important for people with diabetes as chronicaly high blood sugar levels can lead."
-									treatment="Check-up"
-									time="08 AM -10 AM"
-								/>
-								<AppointmentNoteDetails
-									date="June 12, 2024"
-									title="Diabetes Control Appointment"
-									description="Blood sugar management is especially important for people with diabetes as chronicaly high blood sugar levels can lead."
-									treatment="Check-up"
-									time="08 AM -10 AM"
-								/>
+								{sortedAppointments.map((appointment, index) => (
+									<AppointmentNoteDetailsCard key={index} {...appointment} />
+								))}
 							</div>
 						</div>
 					</div>
