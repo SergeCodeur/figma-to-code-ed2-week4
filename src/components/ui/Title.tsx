@@ -6,7 +6,9 @@ const Title = ({
 	className?: String;
 }) => {
 	return (
-		<h2 className={`text-dark-blue font-bold text-5xl ${className}`}>
+		<h2
+			className={`text-dark-blue font-bold text-2xl sm:text-4xl lg:text-5xl ${className}`}
+		>
 			{children}
 		</h2>
 	);

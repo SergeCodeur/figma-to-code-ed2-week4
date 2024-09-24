@@ -1,23 +1,36 @@
-import { ArrowDown, Calendar, Clock } from "@/assets/icons";
+import { Clock } from "@/assets/icons";
 import Button from "@/components/ui/Button";
-import { useState } from "react";
+import { useBookAppointment } from "@/contexts/BookAppointmentFormContext";
+import DatePicker from "./DatePicker";
+import Input from "./Input";
+import Label from "./Label";
+import Select from "./Select";
 
 const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
-	const [date, setDate] = useState("");
-	const [time, setTime] = useState("");
-	const [type, setType] = useState("General Consultation");
-	const [reason, setReason] = useState("");
-	const [file, setFile] = useState<File | null>(null);
+	const { toggleBookAppointment, updateFormData, formData } =
+		useBookAppointment();
+
+	const handleChange = (
+		e:
+			| React.ChangeEvent<HTMLInputElement>
+			| React.ChangeEvent<HTMLSelectElement>
+			| React.ChangeEvent<HTMLTextAreaElement>,
+	) => {
+		const { name, value } = e.target;
+		updateFormData({ [name]: value });
+	};
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
-			setFile(e.target.files[0]);
+			updateFormData({ file: e.target.files[0] });
 		}
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		console.log({ date, time, type, reason, file });
+	const handleSubmit = () => {
+		toggleBookAppointment();
+
+		// ceci est juste un test
+		console.log(formData);
 	};
 
 	return (
@@ -26,39 +39,25 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 			<form onSubmit={handleSubmit} className="space-y-6">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div>
-						<label
-							htmlFor="date"
-							className="block text-sm font-medium text-gray-700 mb-1"
-						>
-							Date
-						</label>
-						<div className="relative">
-							<input
-								type="text"
-								id="date"
-								placeholder="dd/mm/yyyy"
-								className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-								value={date}
-								onChange={e => setDate(e.target.value)}
-							/>
-							<Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-						</div>
+						<Label htmlFor="date" label="Date" />
+						<DatePicker
+							name="date"
+							id="date"
+							value={formData.date}
+							onChange={handleChange}
+						/>
 					</div>
 					<div>
-						<label
-							htmlFor="time"
-							className="block text-sm font-medium text-gray-700 mb-1"
-						>
-							Time
-						</label>
+						<Label htmlFor="time" label="Time" />
 						<div className="relative">
-							<input
-								type="text"
+							<Input
 								id="time"
+								name="time"
+								type="text"
 								placeholder="--:-- --"
-								className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-								value={time}
-								onChange={e => setTime(e.target.value)}
+								value={formData.time}
+								onChange={handleChange}
+								className="pl-10"
 							/>
 							<Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
 						</div>
@@ -66,25 +65,18 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div>
-						<label
-							htmlFor="type"
-							className="block text-sm font-medium text-gray-700 mb-1"
-						>
-							Type
-						</label>
-						<div className="relative">
-							<select
-								id="type"
-								className="w-full pl-3 pr-10 py-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-								value={type}
-								onChange={e => setType(e.target.value)}
-							>
-								<option>General Consultation</option>
-								<option>Follow-up</option>
-								<option>Specialist Consultation</option>
-							</select>
-							<ArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-						</div>
+						<Label htmlFor="type" label="Type" />
+						<Select
+							id="type"
+							name="type"
+							value={formData.type}
+							onChange={handleChange}
+							options={[
+								"General Consultation",
+								"Follow-up",
+								"Specialist Consultation",
+							]}
+						/>
 					</div>
 					<div>
 						<label
@@ -96,18 +88,19 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 						<div className="flex items-center space-x-4">
 							<label
 								htmlFor="file-upload"
-								className="cursor-pointer bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+								className="cursor-pointer bg-dark-blue text-white text-xs md:text-sm px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
 							>
 								Choose File
-								<input
-									id="file-upload"
+								<Input
+									name="file"
 									type="file"
-									className="hidden"
+									id="file-upload"
 									onChange={handleFileChange}
+									className="hidden"
 								/>
 							</label>
-							<span className="text-gray-600">
-								{file ? file.name : "No file chosen"}
+							<span className="text-gray-600 text-xs md:text-sm">
+								{formData.file ? formData.file.name : "No file chosen"}
 							</span>
 						</div>
 					</div>
@@ -123,11 +116,11 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 						id="reason"
 						rows={4}
 						className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-						value={reason}
-						onChange={e => setReason(e.target.value)}
+						value={formData.reason}
+						onChange={handleChange}
 					></textarea>
 				</div>
-				<div className="flex justify-between">
+				<div className="flex justify-between gap-4">
 					<Button
 						type="button"
 						variant="linear_color"

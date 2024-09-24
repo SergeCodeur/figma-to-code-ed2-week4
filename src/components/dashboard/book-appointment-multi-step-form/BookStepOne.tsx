@@ -1,93 +1,80 @@
+"use client";
 import Button from "@/components/ui/Button";
+import { useBookAppointment } from "@/contexts/BookAppointmentFormContext";
+import Input from "./Input";
+import Label from "./Label";
 
-const BookStepOne = ({
-	handleNext,
-	handleExit,
-}: {
-	handleNext: () => void;
-	handleExit: () => void;
-}) => {
+const BookStepOne = ({ handleNext }: { handleNext: () => void }) => {
+	const { formData, updateFormData } = useBookAppointment();
+
+	const handleChange = (
+		e: React.ChangeEvent<
+			HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+		>,
+	) => {
+		const { name, value } = e.target;
+		updateFormData({ [name]: value });
+	};
+
 	return (
 		<div>
 			<h2 className="text-lg font-semibold mb-4">Personal Information</h2>
 			<form className="space-y-6">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div>
-						<label
-							htmlFor="firstname"
-							className="block text-sm font-medium text-gray-700 mb-1"
-						>
-							Fist name
-						</label>
-						<input
+						<Label htmlFor="firstname" label="Firstname" />
+						<Input
+							name="firstname"
 							type="text"
 							id="firstname"
-							placeholder=""
-							className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							onChange={handleChange}
+							value={formData.firstname}
 						/>
 					</div>
 					<div>
-						<label
-							htmlFor="lastname"
-							className="block text-sm font-medium text-gray-700 mb-1"
-						>
-							Last name
-						</label>
-						<input
+						<Label htmlFor="lastname" label="Last name" />
+						<Input
+							name="lastname"
 							type="text"
 							id="lastname"
-							placeholder=""
-							className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							onChange={handleChange}
+							value={formData.lastname}
 						/>
 					</div>
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div>
-						<label
-							htmlFor="phone"
-							className="block text-sm font-medium text-gray-700 mb-1"
-						>
-							Phone number
-						</label>
-						<input
-							type="text"
+						<Label htmlFor="phone" label="Phone number" />
+						<Input
+							name="phone"
+							type="tel"
 							id="phone"
-							placeholder=""
-							className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							onChange={handleChange}
+							value={formData.phone}
 						/>
 					</div>
 					<div>
-						<label
-							htmlFor="Email"
-							className="block text-sm font-medium text-gray-700 mb-1"
-						>
-							Email
-						</label>
-						<input
-							type="text"
-							id="Email"
-							placeholder=""
-							className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+						<Label htmlFor="email" label="Email" />
+						<Input
+							name="email"
+							type="email"
+							id="email"
+							onChange={handleChange}
+							value={formData.email}
 						/>
 					</div>
 				</div>
 				<div>
-					<label
-						htmlFor="reason"
-						className="block text-sm font-medium text-gray-700 mb-1"
-					>
-						Adress
-					</label>
-					<input
+					<Label htmlFor="adress" label="Adress" />
+					<Input
+						name="address"
 						type="text"
-						id="adress"
-						className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-					></input>
+						id="address"
+						onChange={handleChange}
+						value={formData.address}
+					/>
 				</div>
-				<div className="flex justify-between mt-4">
-					<Button type="button" className="w-52" onClick={handleExit}>
-						Exit
-					</Button>
+				<div className="flex justify-end mt-4">
 					<Button
 						type="button"
 						variant="linear_color"

@@ -1,8 +1,6 @@
 import { Calendar, FilledCircle } from "@/assets/icons";
-import AppointmentNoteDetails, {
-	AppointmentNoteDetailsProps,
-} from "./AppointmentNoteDetails";
-
+import { AppointmentNoteDetailsProps } from "@/types";
+import AppointmentNoteDetailsCard from "./AppointmentNoteDetails";
 type AppointmentNoteCardProps = {
 	date: string;
 	details: AppointmentNoteDetailsProps;
@@ -14,15 +12,15 @@ const AppointmentNoteCard: React.FC<AppointmentNoteCardProps> = ({
 }) => {
 	return (
 		<div className="flex gap-2.5">
-			<div className="pt-6">
+			<div className="pt-6 md:block hidden">
 				<FilledCircle />
 			</div>
 			<div className="py-5 space-y-2.5">
-				<div className="flex gap-2.5">
+				<div className="flex items-center gap-2.5">
 					<Calendar />
-					<h3 className="font-semibold text-base">{date}</h3>
+					<h3 className="font-semibold text-sm md:text-base">{date}</h3>
 				</div>
-				<AppointmentNoteDetails
+				<AppointmentNoteDetailsCard
 					title={details.title}
 					description={details.description}
 					treatment={details.treatment}

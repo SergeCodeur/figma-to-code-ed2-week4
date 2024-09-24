@@ -1,14 +1,15 @@
-import useClickOutside from "@/hooks/UseClickOutside";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 interface SidebarContextProps {
 	isOpen: boolean;
 	toggleSidebar: () => void;
+	// closeSidebar: () => void;
 }
 
 const SidebarContext = createContext<SidebarContextProps>({
 	isOpen: false,
 	toggleSidebar: () => {},
+	// closeSidebar: () => {},
 });
 
 export const useSidebar = () => useContext(SidebarContext);
@@ -20,17 +21,13 @@ export const SidebarProvider = ({ children }: { children: ReactNode }) => {
 		setIsOpen(prevState => !prevState);
 	};
 
-	const ref = useClickOutside(() => {
-		if (isOpen) {
-			setIsOpen(false);
-		}
-	}, isOpen);
+	const closeSidebar = () => {
+		setIsOpen(false);
+	};
 
 	return (
 		<SidebarContext.Provider value={{ isOpen, toggleSidebar }}>
-			<div className="w-full h-full flex">
-				<aside ref={ref}>{children}</aside>
-			</div>
+			<div className="w-full h-full flex relative">{children}</div>
 		</SidebarContext.Provider>
 	);
 };

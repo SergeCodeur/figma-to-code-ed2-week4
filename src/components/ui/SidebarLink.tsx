@@ -7,7 +7,7 @@ const SidebarLink = () => {
 	const pathname = usePathname();
 
 	const isLinkActive = (href: string) => {
-		return pathname === href;
+		return pathname.startsWith(href);
 	};
 
 	return (
