@@ -14,13 +14,19 @@ const TopNavPatient = () => {
 		<div className="sticky top-0 z-[9] w-full">
 			<div className="w-full flex items-center justify-between px-6 py-3 border-b border-blue/15 bg-background">
 				<div className="flex items-center gap-2.5">
-					<Image
-						src="/images/logo-light.svg"
-						alt="logo"
-						width={50}
-						height={50}
-						priority={true}
-					/>
+					<Link href="" className="w-[50px] h-[50px]">
+						<Image
+							src="/images/logo-light.svg"
+							alt="logo"
+							width={50}
+							height={50}
+							priority={true}
+							style={{
+								width: "auto",
+								height: "auto",
+							}}
+						/>
+					</Link>
 					<span className="text-xs md:text-sm">
 						Welcome <span className="font-semibold">John Doe</span>
 					</span>
