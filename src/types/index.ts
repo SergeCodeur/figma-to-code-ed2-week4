@@ -52,7 +52,6 @@ export interface TestimonialsProps {
 export interface FAQProps {
 	question: string;
 	answer: string;
-}
 
 export interface ICard {
 	name: string;

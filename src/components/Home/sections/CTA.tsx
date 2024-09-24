@@ -16,6 +16,7 @@ const CTA = () => {
 					<Link
 						href="/role-selection"
 						className="bg-gradient-to-b from-[#307bc4] to-[#274760] text-xs md:text-base text-white shadow-light-blue !rounded-3xl px-8 py-3 max-w-44 flex justify-center items-center gap-2.5"
+
 					>
 						Book now <ChevronRight />
 					</Link>
