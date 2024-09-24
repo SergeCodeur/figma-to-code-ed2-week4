@@ -4,7 +4,7 @@ import { Cancel, ChevronRight, Hamburger } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import NavLinks from "./NavLinks";
+import NavLinks from "../NavLinks";
 
 const NavBar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
