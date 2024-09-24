@@ -30,6 +30,8 @@ const config: Config = {
 				"hero-img": "url('/images/hero_image.webp')",
 				"dep-bg": "url('/images/departements-bg.png')",
 				"cta-bg": "url('/images/cta_bg.png')",
+				"gradient-blue-green":
+					"linear-gradient(119.31deg, #D2EAEF 17.16%, #86BBF1 89.78%)",
 			},
 			colors: {
 				background: "#ffffff",

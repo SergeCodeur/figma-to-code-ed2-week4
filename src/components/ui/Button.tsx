@@ -6,11 +6,13 @@ type ButtonProps = {
 		| "ghost"
 		| "linear_color_shadow";
 	children: React.ReactNode;
+	type?: string;
 	className?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button: React.FC<ButtonProps> = ({
 	variant,
+	type,
 	children,
 	className,
 	...props

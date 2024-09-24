@@ -49,6 +49,10 @@ export interface TestimonialsProps {
 	active?: boolean;
 }
 
+export interface FAQProps {
+	question: string;
+	answer: string;
+
 export interface ICard {
 	name: string;
 	image: string;

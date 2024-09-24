@@ -1,4 +1,6 @@
+import { ChevronRight } from "@/assets/icons";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "../../ui/Button";
 import ContactInfo from "../ContactInfo";
 
@@ -6,7 +8,7 @@ const HeroSection = () => {
 	return (
 		<div className="relative">
 			<div className="relative h-[600px] container bg-hero-bg bg-cover bg-center">
-				<div className="lg:absolute lg:left-0 lg:top-[45%] max-lg:pt-20 max-lg:text-center lg:-translate-y-2/4 lg:max-w-[670px] w-full lg:pl-[73px] space-y-10">
+				<div className="lg:absolute lg:left-0 lg:top-[45%] flex flex-col lg:items-start items-center max-lg:pt-20 max-lg:text-center lg:-translate-y-2/4 lg:max-w-[670px] w-full lg:pl-[73px] space-y-10">
 					<div className="md:space-y-7">
 						<h1 className="text-2xl sm:text-5xl lg:text-6xl max-lg:text-center font-bold sm:leading-[58px]">
 							Your Partner in Health and Wellness
@@ -16,7 +18,7 @@ const HeroSection = () => {
 							healthcare services to help you live healthier and happier.
 						</p>
 					</div>
-					<Button variant="ghost" className="px-0">
+					<Button variant="ghost" className="px-0 hidden lg:flex">
 						<svg
 							width="50"
 							height="51"
@@ -47,6 +49,12 @@ const HeroSection = () => {
 						</svg>
 						See how we work
 					</Button>
+					<Link
+						href="/role-selection"
+						className="bg-gradient-to-b from-[#307bc4] to-[#274760] text-xs md:text-base text-white shadow-light-blue !rounded-3xl px-8 py-3 max-w-44 flex lg:hidden justify-center items-center gap-2.5"
+					>
+						Book now <ChevronRight />
+					</Link>
 				</div>
 				<Image
 					src="/images/hero_img.png"
