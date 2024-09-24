@@ -23,16 +23,16 @@ const BookAppointmentContainer = () => {
 		<div
 			className={`${
 				isOpen
-					? "bg-dark-blue/20 inset-0 fixed overflow-auto z-40 !m-0 opacity-100 pointer-events-auto visible"
+					? "bg-dark-blue/20 inset-0 fixed overflow-y-scroll z-40 !m-0 opacity-100 pointer-events-auto visible"
 					: "opacity-0 pointer-events-none invisible"
-			} transition-opacity duration-300 ease-out`}
+			} transition-opacity duration-300 ease-out flex justify-center items-center`}
 		>
 			<div
 				className={`${
 					isOpen
 						? "opacity-100 pointer-events-auto visible"
 						: "opacity-0 pointer-events-none invisible"
-				} absolute z-20 bg-background max-w-2xl md:w-full w-[90%] min-h-[500px] rounded-2xl border border-dark-blue/20 transition-opacity duration-300 ease-out top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 p-5`}
+				} bg-background max-w-2xl md:w-full w-[90%] min-h-[500px] rounded-2xl border border-dark-blue/20 translate-y-24 transition-opacity duration-300 ease-out p-5`}
 			>
 				<div className="relative">
 					<div className="flex justify-between mx-auto mb-6 max-w-28 md:max-w-44 relative">
@@ -57,7 +57,7 @@ const BookAppointmentContainer = () => {
 					</div>
 					<Button
 						variant="ghost"
-						className="absolute right-0 top-0"
+						className="absolute sm:right-0 sm:top-0 -top-2 -right-2 max-sm:p-2"
 						onClick={toggleBookAppointment}
 					>
 						<Cancel />

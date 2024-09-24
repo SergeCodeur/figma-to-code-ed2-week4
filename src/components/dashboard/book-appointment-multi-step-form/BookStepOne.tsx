@@ -74,11 +74,11 @@ const BookStepOne = ({ handleNext }: { handleNext: () => void }) => {
 						value={formData.address}
 					/>
 				</div>
-				<div className="flex justify-end mt-4">
+				<div className="flex md:justify-end mt-4">
 					<Button
 						type="button"
 						variant="linear_color"
-						className="w-52"
+						className="w-full md:w-52"
 						onClick={handleNext}
 					>
 						Next
