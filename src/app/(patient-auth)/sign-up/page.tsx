@@ -1,10 +1,10 @@
 "use client";
+import Arrow from "@/assets/icons/arrow";
 import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Arrow from "../ui/arrow";
-import Input from "../ui/input";
 import { registerForm } from "../utils/data";
 // import useRegister from "./userRegister";
 
@@ -23,11 +23,13 @@ const SignUp = () => {
 	return (
 		<div className="flex flex-col justify-center items-center space-y-10">
 			<div className="flex flex-col space-y-3 ">
-				<span className="font-bold text-3xl text-foreground">Register</span>
-				<span className="text-base text-foreground">
+				<h2 className="font-bold text-2xl lg:text-3xl text-foreground">
+					Register
+				</h2>
+				<p className="text-sm lg:text-base text-foreground">
 					Join our healthcare community to access personalized services and book
 					appointments.
-				</span>
+				</p>
 			</div>
 			<form
 				className={`flex flex-col space-y-4 w-full ${
@@ -37,7 +39,9 @@ const SignUp = () => {
 			>
 				{registerForm.map(({ name, label, placeholder }) => (
 					<div className="flex flex-col space-y-2" key={name}>
-						<label className="ml-2 text-[#414870] text-sm">{label}</label>
+						<label className="ml-2 text-[#414870] text-xs md:text-sm">
+							{label}
+						</label>
 						<Input
 							type={
 								name === "email"
@@ -47,7 +51,6 @@ const SignUp = () => {
 									: "text"
 							}
 							name={name}
-							className="w-full px-3 py-2 border border-blue/50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 							// value={formData[name as keyof typeof formData]}
 							// onChange={handleChange}
 							placeholder={placeholder}
@@ -70,7 +73,7 @@ const SignUp = () => {
 							router.push("/sign-in");
 						}}
 					>
-						<span className="text-white text-base">Register</span>
+						Register
 						<Arrow />
 					</Button>
 					<span className="text-xs text-foreground">
