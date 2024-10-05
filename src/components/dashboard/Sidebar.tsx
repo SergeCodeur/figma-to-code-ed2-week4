@@ -3,10 +3,17 @@ import { Logout, Setting } from "@/assets/icons";
 import { useSidebar } from "@/contexts/SidebarContext";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import SidebarLink from "../ui/SidebarLink";
 
 const Sidebar = () => {
 	const { isOpen } = useSidebar();
+	const router = useRouter();
+	const handleLogout = () => {
+		document.cookie = "doctorId=; path=/; max-age=0";
+		localStorage.removeItem("doctor");
+		router.push("/doctor-login");
+	};
 	return (
 		<aside
 			className={`${
@@ -38,13 +45,13 @@ const Sidebar = () => {
 					</Link>
 				</li>
 				<li>
-					<Link
-						href="#"
+					<button
+						onClick={handleLogout}
 						className="text-base py-2.5 px-3 rounded-ls flex items-center gap-2.5 w-full border border-dark-blue/20"
 					>
 						<Logout />
 						<span>Logout</span>
-					</Link>
+					</button>
 				</li>
 			</ul>
 		</aside>
