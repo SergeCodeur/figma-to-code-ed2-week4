@@ -5,7 +5,6 @@ import { FormData } from "../utils/interface";
 
 type Login = Pick<FormData, "email" | "password">;
 const useLogin = () => {
-	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState<Login>({
 		email: "",
 		password: "",
@@ -39,7 +38,6 @@ const useLogin = () => {
 
 	const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setLoading(true);
 
 		const validationErrors: Partial<Login> = {};
 
@@ -70,10 +68,9 @@ const useLogin = () => {
 				alert("No user found, please register yourself");
 			}
 		}
-		setLoading(false);
 	};
 
-	return { formData, errors, loading, handleLogin, handleChange };
+	return { formData, errors, handleLogin, handleChange };
 };
 
 export default useLogin;

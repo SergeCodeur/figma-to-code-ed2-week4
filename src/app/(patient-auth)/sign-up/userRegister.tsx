@@ -5,7 +5,6 @@ import { hashPassword } from "../utils/hash";
 import { FormData } from "../utils/interface";
 
 const useRegister = () => {
-	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState<FormData>({
 		firstName: "",
 		lastName: "",
@@ -46,7 +45,6 @@ const useRegister = () => {
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		setLoading(true);
 		e.preventDefault();
 		const validationErrors: Partial<FormData> = {};
 
@@ -64,20 +62,17 @@ const useRegister = () => {
 			setErrors(validationErrors);
 		} else {
 			const hashedPassword = hashPassword(formData.password);
-			const userId = Date.now().toString(); // Génération d'un userId en utilisant la date
+			const userId = Date.now().toString();
 			const userData = { ...formData, id: userId, password: hashedPassword };
 			localStorage.setItem("user", JSON.stringify(userData));
 
-			// Définition du userId dans les cookies
 			document.cookie = `userId=${userId}; path=/; max-age=${60 * 60 * 24 * 7}`;
 
 			router.push("/sign-in");
 		}
-
-		setLoading(false);
 	};
 
-	return { formData, errors, loading, handleChange, handleSubmit };
+	return { formData, errors, handleChange, handleSubmit };
 };
 
 export default useRegister;
