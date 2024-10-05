@@ -105,3 +105,14 @@ export interface SelectProps {
 	options: string[];
 	className?: string;
 }
+
+export type ButtonProps = {
+	variant?:
+		| "default"
+		| "linear_color"
+		| "outline"
+		| "ghost"
+		| "linear_color_shadow";
+	children: React.ReactNode;
+	className?: string;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
