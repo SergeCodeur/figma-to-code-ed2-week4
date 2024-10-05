@@ -26,5 +26,6 @@ export { default as OutlineCircle } from "./outline-circle";
 export { default as Phone } from "./phone";
 export { default as Search } from "./search";
 export { default as Setting } from "./setting";
+export { default as Spinner } from "./spinner";
 export { default as Stethoscope } from "./stethoscope";
 export { default as UserGroup } from "./user-group";
