@@ -1,17 +1,16 @@
 "use client";
 
+import useLogin from "@/app/(patient-auth)/sign-in/userLogin";
 import { logInForm } from "@/app/(patient-auth)/utils/data";
 import { Arrow } from "@/assets/icons";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 
 const SignInForm = () => {
 	const [animate, setAnimate] = useState(false);
-	const router = useRouter();
-	// const { formData, errors, handleLogin, handleChange } = useLogin();
+	const { formData, errors, handleLogin, handleChange } = useLogin();
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setAnimate(true);
@@ -23,7 +22,7 @@ const SignInForm = () => {
 			className={`flex flex-col space-y-4 w-full ${
 				animate ? "move-in-left" : "opacity-0"
 			}`}
-			// onSubmit={handleLogin}
+			onSubmit={handleLogin}
 		>
 			{logInForm.map(({ name, label, placeholder }) => (
 				<div className="flex flex-col space-y-2" key={name}>
@@ -33,16 +32,16 @@ const SignInForm = () => {
 					<Input
 						type={name === "email" ? "email" : "password"}
 						name={name}
-						// value={formData[name as keyof typeof formData]}
-						// onChange={handleChange}
+						value={formData[name as keyof typeof formData]}
+						onChange={handleChange}
 						placeholder={placeholder}
 						required
 					/>
-					{/* {errors[name as keyof typeof formData] && (
-							<span className="text-sm text-red-500">
-								{errors[name as keyof typeof formData]}
-							</span>
-						)} */}
+					{errors[name as keyof typeof formData] && (
+						<span className="text-sm text-red-500">
+							{errors[name as keyof typeof formData]}
+						</span>
+					)}
 				</div>
 			))}
 			<div className="flex items-center justify-between space-x-3">
@@ -70,13 +69,7 @@ const SignInForm = () => {
 				</div>
 			</div>
 			<div className="flex flex-col space-y-2">
-				<Button
-					variant="linear_color"
-					className="w-[200px] !rounded-3xl"
-					onClick={() => {
-						router.push("/dashboard-patient");
-					}}
-				>
+				<Button variant="linear_color" className="w-[200px] !rounded-3xl">
 					<span className="text-white">Log in</span>
 					<Arrow />
 				</Button>

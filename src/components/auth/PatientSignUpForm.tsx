@@ -1,18 +1,15 @@
 "use client";
+import useRegister from "@/app/(patient-auth)/sign-up/userRegister";
 import { registerForm } from "@/app/(patient-auth)/utils/data";
 import Arrow from "@/assets/icons/arrow";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-// import useRegister from "./userRegister";
 
 const SignUpForm = () => {
 	const [animate, setAnimate] = useState(false);
-	// const { formData, errors, handleChange, handleSubmit } = useRegister();
-
-	const router = useRouter();
+	const { formData, errors, handleChange, handleSubmit } = useRegister();
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -25,7 +22,7 @@ const SignUpForm = () => {
 			className={`flex flex-col space-y-4 w-full ${
 				animate ? "move-in-left" : "opacity-0"
 			}`}
-			// onSubmit={handleSubmit}
+			onSubmit={handleSubmit}
 		>
 			{registerForm.map(({ name, label, placeholder }) => (
 				<div className="flex flex-col space-y-2" key={name}>
@@ -41,16 +38,16 @@ const SignUpForm = () => {
 								: "text"
 						}
 						name={name}
-						// value={formData[name as keyof typeof formData]}
-						// onChange={handleChange}
+						value={formData[name as keyof typeof formData]}
+						onChange={handleChange}
 						placeholder={placeholder}
 						required
 					/>
-					{/* {errors[name as keyof typeof formData] && (
-							<span className="text-sm text-red-500">
-								{errors[name as keyof typeof formData]}
-							</span>
-						)} */}
+					{errors[name as keyof typeof formData] && (
+						<span className="text-sm text-red-500">
+							{errors[name as keyof typeof formData]}
+						</span>
+					)}
 				</div>
 			))}
 
@@ -59,9 +56,6 @@ const SignUpForm = () => {
 					variant="linear_color"
 					className="w-[200px] !rounded-3xl"
 					type="submit"
-					onClick={() => {
-						router.push("/sign-in");
-					}}
 				>
 					Register
 					<Arrow />
