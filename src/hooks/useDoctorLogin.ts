@@ -1,3 +1,4 @@
+import { FormData } from "@/app/(patient-auth)/utils/interface";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -8,15 +9,35 @@ const doctor = {
 	email: "doctor@example.com",
 	password: "hashed_password",
 };
+type Login = Pick<FormData, "email" | "password">;
 
 const useDoctorLogin = () => {
-	const [formData, setFormData] = useState({ email: "", password: "" });
-	const [error, setError] = useState<string | null>(null);
+	const [formData, setFormData] = useState<Login>({ email: "", password: "" });
+	const [error, setError] = useState<Partial<Login>>({});
 	const router = useRouter();
+	const validationRules: {
+		[key in keyof Login]: (value: string) => string | undefined;
+	} = {
+		email: value =>
+			!/\S+@\S+\.\S+/.test(value) ? "Email is not valid" : undefined,
+		password: value =>
+			value.length < 6
+				? "Password must be be at least 6 characters"
+				: undefined,
+	};
+	const validateField = (
+		name: keyof Login,
+		value: string,
+	): string | undefined => {
+		return validationRules[name](value);
+	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData(prevData => ({ ...prevData, [name]: value }));
+
+		const error = validateField(name as keyof Login, value);
+		setError(prevError => ({ ...prevError, [name]: error }));
 	};
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,7 +54,7 @@ const useDoctorLogin = () => {
 			}`;
 			router.push("/dashboard-doctor/patient-list");
 		} else {
-			setError("Invalid email or password");
+			alert("Invalid email or password");
 		}
 	};
 
