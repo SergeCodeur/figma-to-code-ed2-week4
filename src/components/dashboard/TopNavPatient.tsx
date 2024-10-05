@@ -3,12 +3,23 @@ import { Bell } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TopNavPatient = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const user = JSON.parse(localStorage.getItem("user") || "{}");
+	const [user, setUser] = useState<{
+		firstName: string;
+		lastName: string;
+		email: string;
+	} | null>(null);
 	const router = useRouter();
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const storedUser = localStorage.getItem("user");
+			setUser(storedUser ? JSON.parse(storedUser) : null);
+		}
+	}, []);
 
 	const handleClick = () => {
 		setIsOpen(!isOpen);
@@ -39,7 +50,7 @@ const TopNavPatient = () => {
 					<span className="text-xs md:text-sm">
 						Welcome{" "}
 						<span className="font-semibold">
-							{user.lastName} {user.firstName}
+							{user ? `${user.firstName} ${user.lastName}` : "Loading..."}
 						</span>
 					</span>
 				</div>
@@ -71,9 +82,11 @@ const TopNavPatient = () => {
 			>
 				<div className="p-2.5">
 					<h3 className="font-medium text-[15px]">
-						{user.lastName} {user.firstName}
+						{user ? `${user.lastName} ${user.firstName}` : "Loading..."}
 					</h3>
-					<p className="font-light text-sm">{user.email}</p>
+					<p className="font-light text-sm">
+						{user ? `${user.email}` : "Loading..."}
+					</p>
 				</div>
 				<div className="p-2.5 border-y border-dark-blue/20 space-y-1">
 					<Link
