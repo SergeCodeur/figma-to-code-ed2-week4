@@ -2,13 +2,22 @@
 import { Bell } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const TopNavPatient = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const user = JSON.parse(localStorage.getItem("user") || "{}");
+	const router = useRouter();
 
 	const handleClick = () => {
 		setIsOpen(!isOpen);
+	};
+
+	const logout = () => {
+		localStorage.removeItem("user");
+		document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		router.push("/sign-in");
 	};
 	return (
 		<div className="sticky top-0 z-[9] w-full">
@@ -28,7 +37,10 @@ const TopNavPatient = () => {
 						/>
 					</Link>
 					<span className="text-xs md:text-sm">
-						Welcome <span className="font-semibold">John Doe</span>
+						Welcome{" "}
+						<span className="font-semibold">
+							{user.lastName} {user.firstName}
+						</span>
 					</span>
 				</div>
 				<div className="flex items-center gap-2 md:gap-7">
@@ -40,19 +52,28 @@ const TopNavPatient = () => {
 						alt="user image"
 						width={50}
 						height={51}
+						role="button"
+						aria-haspopup="true"
+						aria-expanded={isOpen}
+						aria-controls="user-menu"
 					/>
 				</div>
 			</div>
 			<div
+				id="user-menu"
 				className={`${
 					isOpen
 						? "opacity-100 pointer-events-auto visible"
 						: "opacity-0 pointer-events-none invisible"
 				} absolute -bottom-2 translate-y-full right-5 z-20 bg-background min-w-52 rounded-2xl border border-dark-blue/20 transition-opacity duration-300 ease-out`}
+				role="menu"
+				aria-labelledby="user-menu-button"
 			>
 				<div className="p-2.5">
-					<h3 className="font-medium text-[15px]">John Doe</h3>
-					<p className="font-light">John@gmail.com</p>
+					<h3 className="font-medium text-[15px]">
+						{user.lastName} {user.firstName}
+					</h3>
+					<p className="font-light text-sm">{user.email}</p>
 				</div>
 				<div className="p-2.5 border-y border-dark-blue/20 space-y-1">
 					<Link
@@ -69,7 +90,10 @@ const TopNavPatient = () => {
 					</Link>
 				</div>
 				<div className="p-2.5">
-					<button className="text-sm font-medium px-2.5 py-1.5 rounded-ls hover:bg-gray/40 w-full text-left">
+					<button
+						className="text-sm font-medium px-2.5 py-1.5 rounded-ls hover:bg-gray/40 w-full text-left"
+						onClick={logout}
+					>
 						Log out
 					</button>
 				</div>
