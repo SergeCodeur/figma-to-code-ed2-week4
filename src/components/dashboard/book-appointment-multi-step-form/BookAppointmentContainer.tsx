@@ -32,23 +32,23 @@ const BookAppointmentContainer = () => {
 					isOpen
 						? "opacity-100 pointer-events-auto visible"
 						: "opacity-0 pointer-events-none invisible"
-				} bg-background max-w-2xl md:w-full w-[90%] min-h-[500px] rounded-2xl border border-dark-blue/20 translate-y-24 transition-opacity duration-300 ease-out p-5`}
+				} bg-background max-w-2xl md:w-full w-[90%] min-h-fit rounded-2xl border border-dark-blue/20 max-xs:translate-y-24 transition-opacity duration-300 ease-out p-5`}
 			>
 				<div className="relative">
 					<div className="flex justify-between mx-auto mb-6 max-w-28 md:max-w-44 relative">
 						<span
-							className={`md:w-10 md:h-10 h-7 w-7 text-xs md:text-sm text-center font-bold flex justify-center items-center rounded-full bg-dark-blue text-white
+							className={`md:w-10 md:h-10 h-7 w-7 text-xs md:text-sm text-center font-bold flex justify-center items-center rounded-full bg-dark-blue text-white relative z-[2]
 						}`}
 						>
 							1
 						</span>
 						<span
-							className={`w-full h-[1px] absolute top-2/4 -translate-y-2/4 z-[-1] ${
+							className={`w-full h-[1px] absolute top-2/4 -translate-y-2/4 z-0 ${
 								step === 1 ? "bg-gray" : "bg-dark-blue"
 							}`}
 						></span>
 						<span
-							className={`md:w-10 md:h-10 h-7 w-7 text-xs md:text-sm text-center font-bold flex justify-center items-center rounded-full ${
+							className={`md:w-10 md:h-10 h-7 w-7 text-xs md:text-sm text-center font-bold flex justify-center items-center rounded-full relative z-[2] ${
 								step === 2 ? "bg-dark-blue text-white" : "bg-gray"
 							}`}
 						>
