@@ -23,7 +23,11 @@ const DoctorSignInForm = () => {
 						placeholder={placeholder}
 						required
 					/>
-					{error && <span className="text-sm text-red-500">{error}</span>}
+					{error[name as keyof typeof formData] && (
+						<span className="text-sm text-red-500">
+							{error[name as keyof typeof formData]}
+						</span>
+					)}
 				</div>
 			))}
 

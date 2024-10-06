@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import { Bell, Cancel, Hamburger } from "@/assets/icons";
 import { useSidebar } from "@/contexts/SidebarContext";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TopNavDoctor = () => {
 	const { isOpen, toggleSidebar } = useSidebar();
@@ -11,20 +11,21 @@ const TopNavDoctor = () => {
 		firstName: string;
 		lastName: string;
 	} | null>(null);
-
-	if (typeof window !== "undefined") {
-		const storedDoctor = localStorage.getItem("doctor");
-		if (storedDoctor) {
-			setDoctor(JSON.parse(storedDoctor));
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const storedDoctor = localStorage.getItem("doctor");
+			if (storedDoctor) {
+				setDoctor(JSON.parse(storedDoctor));
+			}
 		}
-	}
+	}, []);
 
 	return (
 		<div className="w-full flex items-center justify-between px-6 py-3 border-b border-blue/15 sticky top-0 z-[9] bg-background">
 			<span className="text-sm">
-				Welcome{" "}
+				Welcome
 				<span className="font-semibold">
-					{doctor ? `${doctor.firstName} ${doctor.lastName}` : "Loading..."}
+					{doctor ? ` ${doctor.firstName} ${doctor.lastName}` : "Loading..."}
 				</span>
 			</span>
 			<div className="flex items-center gap-3 md:gap-7">

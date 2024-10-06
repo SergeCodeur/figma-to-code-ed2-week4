@@ -1,5 +1,6 @@
 "use client";
 import { AppointmentCardProps } from "@/types/AppointmentCardProps";
+import { formatAppointmentDate } from "@/utils/formatDate";
 import Image from "next/image";
 import { useState } from "react";
 import Button from "../../ui/Button";
@@ -10,11 +11,30 @@ const AppointmentCard = ({
 	name,
 	date,
 	raison,
+	address,
+	interest,
+	problem,
+	time,
+	id,
+	onDecline,
 }: AppointmentCardProps) => {
 	const [showDetails, setShowDetails] = useState(false);
 
 	const toggleDetails = () => {
 		setShowDetails(!showDetails);
+	};
+
+	const handleDecline = () => {
+		const appointments: AppointmentCardProps[] = JSON.parse(
+			localStorage.getItem("stepData") || "[]",
+		);
+
+		const updatedAppointments = appointments.filter(
+			appointment => appointment.id !== id,
+		);
+
+		localStorage.setItem("stepData", JSON.stringify(updatedAppointments));
+		if (onDecline) onDecline();
 	};
 
 	return (
@@ -45,7 +65,11 @@ const AppointmentCard = ({
 				<p className="text-sm sm:text-base">{raison}</p>
 			</div>
 			<div className="flex items-center flex-wrap justify-between gap-4">
-				<Button variant="outline" className="max-sm:w-full">
+				<Button
+					variant="outline"
+					className="max-sm:w-full"
+					onClick={handleDecline}
+				>
 					Decline appointment
 				</Button>
 				<Button variant="linear_color" className="max-sm:w-full">
@@ -58,11 +82,11 @@ const AppointmentCard = ({
 				<AppointmentDetails
 					image="user"
 					name={name}
-					adress="Preston Inglewood, Maine 98380"
-					date="Monday Jun 14, 2024 on 08 AM - 10 AM"
-					interest="Diabetes Control Appointment"
-					problem="Blood sugar management is especially important for people with diabetes as chronicaly high blood sugar levels can lead."
-					onClose={toggleDetails} // Pass the close function as a prop
+					adress={address}
+					interest={interest}
+					problem={problem}
+					onClose={toggleDetails}
+					date={formatAppointmentDate(date, time)}
 				/>
 			)}
 		</div>
