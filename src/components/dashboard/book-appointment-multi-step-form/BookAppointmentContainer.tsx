@@ -23,8 +23,8 @@ const BookAppointmentContainer = () => {
 		<div
 			className={`${
 				isOpen
-					? "bg-dark-blue/20 inset-0 fixed overflow-y-scroll z-40 !m-0 opacity-100 pointer-events-auto visible"
-					: "opacity-0 pointer-events-none invisible"
+					? "bg-dark-blue/20 inset-0 fixed overflow-y-scroll z-40 !m-0 opacity-100 pointer-events-auto visible block"
+					: "opacity-0 pointer-events-none invisible hidden"
 			} transition-opacity duration-300 ease-out flex justify-center items-center`}
 		>
 			<div
