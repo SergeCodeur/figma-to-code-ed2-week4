@@ -1,6 +1,6 @@
 const registerForm = [
-	{ name: "firstName", label: "First name", placeholder: "Doe" },
-	{ name: "lastName", label: "Last name", placeholder: "John" },
+	{ name: "firstname", label: "First name", placeholder: "Doe" },
+	{ name: "lastname", label: "Last name", placeholder: "John" },
 	{ name: "email", label: "Email", placeholder: "john@gmail.com" },
 	{ name: "password", label: "Password", placeholder: "********" },
 ];

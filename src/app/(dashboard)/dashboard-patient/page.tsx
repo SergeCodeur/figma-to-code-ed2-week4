@@ -1,4 +1,5 @@
 "use client";
+import { ISteperForm } from "@/app/(patient-auth)/utils/interface";
 import { Filter } from "@/assets/icons";
 import BookAppointmentContainer from "@/components/dashboard/book-appointment-multi-step-form/BookAppointmentContainer";
 import BookAppointmentButton from "@/components/dashboard/BookAppointmentButton";
@@ -8,15 +9,31 @@ import PatientDetailsCardHeader from "@/components/dashboard/cards/PatientDetail
 import TopNavPatient from "@/components/dashboard/TopNavPatient";
 import Button from "@/components/ui/Button";
 import { AppointmentNoteDetails } from "@/constants/AppointmentNoteDetails";
-import { BookAppointmentProvider } from "@/contexts/BookAppointmentFormContext";
+import {
+	BookAppointmentProvider,
+	useBookAppointment,
+} from "@/contexts/BookAppointmentFormContext";
+import { useEffect, useState } from "react";
 
 const PatienDashboard = () => {
+	const [user, setUser] = useState<ISteperForm["step1"] | undefined>(undefined);
+	const { formData } = useBookAppointment();
+	console.log(formData.step1.firstname);
 	const sortedAppointments = AppointmentNoteDetails.sort((a, b) => {
 		const dateA = a.date ? new Date(a.date) : new Date(0);
 		const dateB = b.date ? new Date(b.date) : new Date(0);
 		return dateB.getTime() - dateA.getTime();
 	});
-
+	//? is it possible to use another way ?
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const getStorage = localStorage.getItem("user");
+			if (getStorage) {
+				const parsedUser = JSON.parse(getStorage);
+				setUser(parsedUser);
+			}
+		}
+	}, []);
 	return (
 		<BookAppointmentProvider>
 			<div className="w-full space-y-7 relative overflow-y-scroll h-dvh">
@@ -29,7 +46,9 @@ const PatienDashboard = () => {
 						<div className="md:max-w-96 w-full space-y-5">
 							<PatientDetailsCardHeader
 								avatar="/images/patient.png"
-								name="Paul Taylor"
+								name={`${user?.firstname as string} ${
+									user?.lastname as string
+								}`}
 								phoneNumber="+229 49 49 49 49"
 								address="Preston Inglewood, Maine 98380"
 								appointments={19}

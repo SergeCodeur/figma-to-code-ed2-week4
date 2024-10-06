@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 const TopNavPatient = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [user, setUser] = useState<{
-		firstName: string;
-		lastName: string;
+		firstname: string;
+		lastname: string;
 		email: string;
 	} | null>(null);
 	const router = useRouter();
@@ -50,7 +50,7 @@ const TopNavPatient = () => {
 					<span className="text-xs md:text-sm">
 						Welcome{" "}
 						<span className="font-semibold">
-							{user ? `${user.firstName} ${user.lastName}` : "Loading..."}
+							{user ? `${user.firstname} ${user.lastname}` : "Loading..."}
 						</span>
 					</span>
 				</div>
@@ -82,7 +82,7 @@ const TopNavPatient = () => {
 			>
 				<div className="p-2.5">
 					<h3 className="font-medium text-[15px]">
-						{user ? `${user.lastName} ${user.firstName}` : "Loading..."}
+						{user ? `${user.lastname} ${user.firstname}` : "Loading..."}
 					</h3>
 					<p className="font-light text-sm">
 						{user ? `${user.email}` : "Loading..."}
