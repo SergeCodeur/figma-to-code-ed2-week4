@@ -2,11 +2,11 @@
 import { Clock } from "@/assets/icons";
 import Button from "@/components/ui/Button";
 import { useBookAppointment } from "@/contexts/BookAppointmentFormContext";
+import { useState } from "react";
 import DatePicker from "./DatePicker";
 import Input from "./Input";
 import Label from "./Label";
 import Select from "./Select";
-import { useState } from "react";
 
 const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 	const { toggleBookAppointment, updateFormData, formData } =
@@ -80,9 +80,10 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 		// Si des erreurs existent, on les enregistre dans l'état
 		if (Object.keys(validationErrors).length > 0) {
 			setErrors(validationErrors);
+			return;
 		} else {
 			// Si aucune erreur, on stocke les données dans le localStorage
-			const newData = { ...formData.step1, ...formData.step2 };
+			const newData = { id: Date.now(), ...formData.step1, ...formData.step2 };
 			const getStorage = localStorage.getItem("stepData");
 			if (!getStorage) {
 				localStorage.setItem("stepData", JSON.stringify([newData]));
@@ -122,11 +123,11 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 								onChange={handleChange}
 								className="pl-10"
 							/>
-							{errors["time"] && (
-								<span className="text-sm text-red-500">{errors["time"]}</span>
-							)}
 							<Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
 						</div>
+						{errors["time"] && (
+							<span className="text-sm text-red-500">{errors["time"]}</span>
+						)}
 					</div>
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
