@@ -17,20 +17,24 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 			| React.ChangeEvent<HTMLTextAreaElement>,
 	) => {
 		const { name, value } = e.target;
-		updateFormData({ [name]: value });
+		if (name in formData.step1) {
+			updateFormData({ step2: { ...formData.step2, [name]: value } });
+		}
+		//updateFormData({ [name]: value });
 	};
 
-	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-			updateFormData({ file: e.target.files[0] });
-		}
-	};
+	// const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	// 	if (e.target.files) {
+	// 		updateFormData({ file: e.target.files[0] });
+	// 	}
+	// };
 
 	const handleSubmit = () => {
 		toggleBookAppointment();
-
-		// ceci est juste un test
-		console.log(formData);
+		localStorage.setItem(
+			"stepData",
+			JSON.stringify({ ...formData.step1, ...formData.step2 }),
+		);
 	};
 
 	return (
@@ -43,7 +47,7 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 						<DatePicker
 							name="date"
 							id="date"
-							value={formData.date}
+							value={formData.step2.date}
 							onChange={handleChange}
 						/>
 					</div>
@@ -55,7 +59,7 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 								name="time"
 								type="text"
 								placeholder="--:-- --"
-								value={formData.time}
+								value={formData.step2.time}
 								onChange={handleChange}
 								className="pl-10"
 							/>
@@ -69,7 +73,7 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 						<Select
 							id="type"
 							name="type"
-							value={formData.type}
+							value={formData.step2.type}
 							onChange={handleChange}
 							options={[
 								"General Consultation",
@@ -95,12 +99,14 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 									name="file"
 									type="file"
 									id="file-upload"
-									onChange={handleFileChange}
+									//onChange={handleFileChange}
 									className="hidden"
 								/>
 							</label>
 							<span className="text-gray-600 text-xs md:text-sm">
-								{formData.file ? formData.file.name : "No file chosen"}
+								{formData.step2.file
+									? formData.step2.file.name
+									: "No file chosen"}
 							</span>
 						</div>
 					</div>
@@ -116,7 +122,7 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 						id="reason"
 						rows={4}
 						className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-						value={formData.reason}
+						value={formData.step2.reason}
 						onChange={handleChange}
 					></textarea>
 				</div>

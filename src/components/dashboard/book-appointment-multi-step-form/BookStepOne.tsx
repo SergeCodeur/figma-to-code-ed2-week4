@@ -20,10 +20,12 @@ const BookStepOne = ({ handleNext }: { handleNext: () => void }) => {
 		>,
 	) => {
 		const { name, value } = e.target;
-
-		updateFormData({ [name]: value });
-		// const error = validateField(name as keyof typeof formData.step1, value);
-		// setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+		if (name in formData.step1) {
+			updateFormData({ step1: { ...formData.step1, [name]: value } });
+		}
+		//updateFormData({ [name]: value });
+		const error = validateField(name as keyof typeof formData.step1, value);
+		setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
 	};
 
 	const validationRules: {
