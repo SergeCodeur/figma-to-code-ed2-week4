@@ -5,5 +5,4 @@ const step1Data = [
 	{ name: "email", label: "Email" },
 	{ name: "address", label: "Adress" },
 ];
-const step2Data = [{}];
-export { step1Data, step2Data };
+export { step1Data };

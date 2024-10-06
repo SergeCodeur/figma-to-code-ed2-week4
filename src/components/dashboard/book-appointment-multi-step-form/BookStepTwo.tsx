@@ -1,3 +1,4 @@
+"use client";
 import { Clock } from "@/assets/icons";
 import Button from "@/components/ui/Button";
 import { useBookAppointment } from "@/contexts/BookAppointmentFormContext";
@@ -5,10 +6,31 @@ import DatePicker from "./DatePicker";
 import Input from "./Input";
 import Label from "./Label";
 import Select from "./Select";
+import { useState } from "react";
 
 const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 	const { toggleBookAppointment, updateFormData, formData } =
 		useBookAppointment();
+	const [errors, setErrors] = useState<Partial<typeof formData.step2>>({});
+	const validationRules: {
+		[key in keyof Omit<typeof formData.step2, "file" | "type">]: (
+			value: string,
+		) => string | undefined;
+	} = {
+		date: value => (!value.length ? "Invalid date" : undefined),
+		time: value => {
+			const [hours, minutes] = value.split(":").map(Number);
+			return isNaN(hours) || isNaN(minutes) ? "Invalid time format" : undefined;
+		},
+
+		reason: value => (!value.length ? "This field is required" : undefined),
+	};
+	const validateField = (
+		name: keyof Omit<typeof formData.step2, "file" | "type">,
+		value: string,
+	): string | undefined => {
+		return validationRules[name](value);
+	};
 
 	const handleChange = (
 		e:
@@ -17,10 +39,14 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 			| React.ChangeEvent<HTMLTextAreaElement>,
 	) => {
 		const { name, value } = e.target;
-		if (name in formData.step1) {
+		if (name in formData.step2) {
 			updateFormData({ step2: { ...formData.step2, [name]: value } });
 		}
-		//updateFormData({ [name]: value });
+		const error = validateField(
+			name as keyof Omit<typeof formData.step2, "file" | "type">,
+			value,
+		);
+		setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
 	};
 
 	// const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,12 +55,42 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 	// 	}
 	// };
 
-	const handleSubmit = () => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		toggleBookAppointment();
-		localStorage.setItem(
-			"stepData",
-			JSON.stringify({ ...formData.step1, ...formData.step2 }),
-		);
+
+		const validationErrors: Partial<typeof formData.step2> = {};
+		for (const key in formData.step2) {
+			if (key === "date" || key === "time" || key === "reason") {
+				const error = validateField(
+					key as keyof Omit<typeof formData.step2, "file" | "type">,
+					formData.step2[
+						key as keyof Omit<typeof formData.step2, "file" | "type">
+					],
+				);
+
+				if (error) {
+					validationErrors[
+						key as keyof Omit<typeof formData.step2, "file" | "type">
+					] = error;
+				}
+			}
+		}
+
+		// Si des erreurs existent, on les enregistre dans l'état
+		if (Object.keys(validationErrors).length > 0) {
+			setErrors(validationErrors);
+		} else {
+			// Si aucune erreur, on stocke les données dans le localStorage
+			const newData = { ...formData.step1, ...formData.step2 };
+			const getStorage = localStorage.getItem("stepData");
+			if (!getStorage) {
+				localStorage.setItem("stepData", JSON.stringify([newData]));
+			} else {
+				const oldData = JSON.parse(getStorage);
+				localStorage.setItem("stepData", JSON.stringify([...oldData, newData]));
+			}
+		}
 	};
 
 	return (
@@ -50,6 +106,9 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 							value={formData.step2.date}
 							onChange={handleChange}
 						/>
+						{errors["date"] && (
+							<span className="text-sm text-red-500">{errors["date"]}</span>
+						)}
 					</div>
 					<div>
 						<Label htmlFor="time" label="Time" />
@@ -63,6 +122,9 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 								onChange={handleChange}
 								className="pl-10"
 							/>
+							{errors["time"] && (
+								<span className="text-sm text-red-500">{errors["time"]}</span>
+							)}
 							<Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
 						</div>
 					</div>
@@ -120,11 +182,15 @@ const BookStepTwo = ({ handlePrev }: { handlePrev: () => void }) => {
 					</label>
 					<textarea
 						id="reason"
+						name="reason"
 						rows={4}
 						className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
 						value={formData.step2.reason}
 						onChange={handleChange}
 					></textarea>
+					{errors["reason"] && (
+						<span className="text-sm text-red-500">{errors["reason"]}</span>
+					)}
 				</div>
 				<div className="flex justify-between gap-4">
 					<Button

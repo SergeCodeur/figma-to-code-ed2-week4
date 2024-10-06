@@ -14,11 +14,7 @@ const BookStepOne = ({ handleNext }: { handleNext: () => void }) => {
 	): string | undefined => {
 		return validationRules[name](value);
 	};
-	const handleChange = (
-		e: React.ChangeEvent<
-			HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-		>,
-	) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		if (name in formData.step1) {
 			updateFormData({ step1: { ...formData.step1, [name]: value } });
@@ -42,6 +38,26 @@ const BookStepOne = ({ handleNext }: { handleNext: () => void }) => {
 				? "Phone number is not valid"
 				: undefined,
 		address: value => (value.length < 2 ? "Adress is required" : undefined),
+	};
+	const goToStep2 = (e: React.FormEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		const validationErrors: Partial<typeof formData.step1> = {};
+
+		for (const key in formData.step1) {
+			const error = validateField(
+				key as keyof typeof formData.step1,
+				formData.step1[key as keyof typeof formData.step1],
+			);
+			if (error) {
+				validationErrors[key as keyof typeof formData.step1] = error;
+			}
+		}
+
+		if (Object.keys(validationErrors).length > 0) {
+			setErrors(validationErrors);
+		} else {
+			handleNext();
+		}
 	};
 
 	return (
@@ -80,7 +96,7 @@ const BookStepOne = ({ handleNext }: { handleNext: () => void }) => {
 						type="button"
 						variant="linear_color"
 						className="w-full md:w-52"
-						onClick={handleNext}
+						onClick={goToStep2}
 					>
 						Next
 					</Button>
