@@ -37,7 +37,11 @@ const PatientDetails = () => {
 			<div className="flex max-md:flex-col gap-5 min-h-52 justify-center">
 				<div className="md:max-w-96 w-full">
 					<PatientDetailsCard
-						name={`${user?.firstname as string} ${user?.lastname as string}`}
+						name={`${
+							!user?.firstname
+								? "Loading..."
+								: `${user?.firstname as string} ${user?.lastname as string}`
+						}`}
 					/>
 				</div>
 				<div className="flex-1 p-5 border border-dark-blue/20 rounded-2xl h-full max-w-[780px]">

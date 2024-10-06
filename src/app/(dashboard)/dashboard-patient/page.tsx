@@ -46,8 +46,10 @@ const PatienDashboard = () => {
 						<div className="md:max-w-96 w-full space-y-5">
 							<PatientDetailsCardHeader
 								avatar="/images/patient.png"
-								name={`${user?.firstname as string} ${
-									user?.lastname as string
+								name={`${
+									!user?.firstname
+										? "Loading..."
+										: `${user?.firstname as string} ${user?.lastname as string}`
 								}`}
 								phoneNumber="+229 49 49 49 49"
 								address="Preston Inglewood, Maine 98380"
