@@ -1,27 +1,14 @@
-"use client";
-import { ISteperForm } from "@/app/(patient-auth)/utils/interface";
 import { ArrowRight } from "@/assets/icons";
 import AppointmentNoteCard from "@/components/dashboard/cards/AppointmentNoteCard";
 import PatientDetailsCard from "@/components/dashboard/cards/PatientDetailsCard";
 import { Metadata } from "next";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export const metadata: Metadata = {
 	title: "Patient Details",
 };
 
 const PatientDetails = () => {
-	const [user, setUser] = useState<ISteperForm["step1"] | undefined>(undefined);
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			const getStorage = localStorage.getItem("user");
-			if (getStorage) {
-				const parsedUser = JSON.parse(getStorage);
-				setUser(parsedUser);
-			}
-		}
-	}, []);
 	return (
 		<div className="w-full space-y-7">
 			<div className="flex justify-start gap-2.5">
@@ -36,13 +23,7 @@ const PatientDetails = () => {
 			</div>
 			<div className="flex max-md:flex-col gap-5 min-h-52 justify-center">
 				<div className="md:max-w-96 w-full">
-					<PatientDetailsCard
-						name={`${
-							!user?.firstname
-								? "Loading..."
-								: `${user?.firstname as string} ${user?.lastname as string}`
-						}`}
-					/>
+					<PatientDetailsCard name={"Paul Smith"} />
 				</div>
 				<div className="flex-1 p-5 border border-dark-blue/20 rounded-2xl h-full max-w-[780px]">
 					<h3 className="font-semibold text-lg md:text-xl mb-2">
