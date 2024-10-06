@@ -6,8 +6,8 @@ import { FormData } from "../utils/interface";
 
 const useRegister = () => {
 	const [formData, setFormData] = useState<FormData>({
-		firstName: "",
-		lastName: "",
+		firstname: "",
+		lastname: "",
 		email: "",
 		password: "",
 	});
@@ -17,9 +17,9 @@ const useRegister = () => {
 	const validationRules: {
 		[key in keyof FormData]: (value: string) => string | undefined;
 	} = {
-		firstName: value =>
+		firstname: value =>
 			value.length < 2 ? "First name must be at least 2 characters" : undefined,
-		lastName: value =>
+		lastname: value =>
 			value.length < 2 ? "Last name must be at least 2 characters" : undefined,
 		email: value =>
 			!/\S+@\S+\.\S+/.test(value) ? "Email is not valid" : undefined,

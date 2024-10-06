@@ -1,5 +1,11 @@
 import { ISteperForm } from "@/app/(patient-auth)/utils/interface";
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+	createContext,
+	ReactNode,
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 
 interface BookAppointmentContextProps {
 	isOpen: boolean;
@@ -15,16 +21,16 @@ const BookAppointmentContext = createContext<BookAppointmentContextProps>({
 	toggleBookAppointment: () => {},
 	formData: {
 		step1: {
-			firstname: "Paul",
-			lastname: "Taylor",
-			phone: "+229 49 49 49 49",
+			firstname: "",
+			lastname: "",
+			phone: "",
 			email: "",
-			address: "Preston Inglewood, Maine 98380",
+			address: "",
 		},
 		step2: {
 			date: "",
 			time: "",
-			type: "General Consultation",
+			type: "",
 			reason: "",
 			file: null,
 		},
@@ -40,10 +46,12 @@ export const BookAppointmentProvider = ({
 	children: ReactNode;
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [user, setUser] = useState<ISteperForm["step1"] | undefined>(undefined);
+
 	const [formData, setFormData] = useState<ISteperForm>({
 		step1: {
-			firstname: "Paul",
-			lastname: "Taylor",
+			firstname: "",
+			lastname: "",
 			phone: "+229 49 49 49 49",
 			email: "",
 			address: "Preston Inglewood, Maine 98380",
@@ -56,7 +64,28 @@ export const BookAppointmentProvider = ({
 			file: null,
 		},
 	});
-
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const getStorage = localStorage.getItem("user");
+			if (getStorage) {
+				const parsedUser = JSON.parse(getStorage);
+				setUser(parsedUser);
+			}
+		}
+	}, []);
+	useEffect(() => {
+		if (user) {
+			setFormData(prevData => ({
+				...prevData,
+				step1: {
+					...prevData.step1,
+					firstname: user.firstname || prevData.step1.firstname,
+					lastname: user.lastname || prevData.step1.lastname,
+					email: user.email || prevData.step1.email,
+				},
+			}));
+		}
+	}, [user]);
 	const toggleBookAppointment = () => {
 		setIsOpen(prevState => !prevState);
 	};

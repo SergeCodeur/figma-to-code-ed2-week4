@@ -1,12 +1,12 @@
 import PatientDetailsCardFooter from "./PatientDetailsCardFooter";
 import PatientDetailsCardHeader from "./PatientDetailsCardHeader";
 
-const PatientDetailsCard = () => {
+const PatientDetailsCard = ({ name }: { name: string }) => {
 	return (
 		<div className="space-y-5">
 			<PatientDetailsCardHeader
 				avatar="/images/patient.png"
-				name="Paul Taylor"
+				name={name}
 				id="#DOC0223"
 				address="Preston Inglewood, Maine 98380"
 				appointments={19}
